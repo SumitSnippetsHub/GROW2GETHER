@@ -3,7 +3,7 @@ import DotField from "@/components/motion/DotField";
 import { BrowserMockup } from "@/components/mockups/BrowserMockup";
 import { LaptopMockup } from "@/components/mockups/LaptopMockup";
 import { PhoneMockup } from "@/components/mockups/PhoneMockup";
-import { images } from "@/data/images";
+import { projectStills } from "@/data/images";
 
 type Route = "about" | "services" | "products" | "works" | "contact";
 
@@ -47,7 +47,7 @@ const content = {
 function AboutVisual() {
   return (
     <div className="relative mx-auto w-full max-w-lg -rotate-2 drop-shadow-2xl">
-      <BrowserMockup image={images.amrut.about} url="grow2gether.com" />
+      <BrowserMockup image={projectStills.zynovate} url="zynovate.in" />
       <div className="absolute -bottom-5 -left-5 rounded-2xl border border-primary/15 bg-white/90 px-4 py-3 shadow-lg">
         <p className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-muted-foreground">
           Our principle
@@ -61,7 +61,7 @@ function AboutVisual() {
 function ServicesVisual() {
   return (
     <div className="relative mx-auto w-full max-w-lg rotate-1 drop-shadow-2xl">
-      <LaptopMockup image={images.amrut.dashboard} priority />
+      <LaptopMockup image={projectStills.seatsBrokers} priority />
       <div className="absolute -right-4 -top-5 rounded-2xl border border-primary/15 bg-white/95 px-4 py-3 shadow-lg">
         <p className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-muted-foreground">
           Delivery system
@@ -76,10 +76,10 @@ function ProductsVisual() {
   return (
     <div className="relative mx-auto flex w-full max-w-lg items-end justify-center gap-[-1rem] drop-shadow-2xl">
       <div className="w-[88%] -rotate-2">
-        <LaptopMockup image={images.amrut.llmsTxt} priority />
+        <LaptopMockup image={projectStills.silverStitch} priority />
       </div>
       <div className="absolute -bottom-6 -right-1 w-24 rotate-6">
-        <PhoneMockup image={images.amrut.mobileHome} priority />
+        <PhoneMockup image={projectStills.blessingMens} priority />
       </div>
     </div>
   );
@@ -88,7 +88,7 @@ function ProductsVisual() {
 function WorksVisual() {
   return (
     <div className="relative mx-auto w-full max-w-lg rotate-2 drop-shadow-2xl">
-      <BrowserMockup image={images.amrut.homeHero} url="amrut.ai" />
+      <BrowserMockup image={projectStills.zynovate} url="zynovate.in" />
       <div className="absolute -bottom-2 -right-2 grid size-16 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg">
         <ArrowUpRight />
       </div>
@@ -100,8 +100,8 @@ function ContactVisual() {
   return (
     <div className="relative mx-auto h-full min-h-56 w-full max-w-lg overflow-hidden rounded-[1.75rem] border border-primary/20 shadow-2xl">
       <img
-        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
-        alt="Team collaborating around a table"
+        src="/images/team/sumit.jpg"
+        alt="Sumit Mishra"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-tr from-espresso/75 via-espresso/25 to-transparent" />

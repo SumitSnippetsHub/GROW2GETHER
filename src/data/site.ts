@@ -44,10 +44,10 @@ export const site = {
       { label: "30 minutes", text: "Free conversation. The fixed price comes after." },
     ],
     featured: {
-      label: "Awwwards",
-      title: "Nominated",
-      text: "Selected work",
-      href: "/#work",
+      label: "Selected work",
+      title: "Live projects",
+      text: "From companies we built for.",
+      href: "/works",
     },
   },
 

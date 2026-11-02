@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
-    apple: [{ url: "/brand/zynovate-logo.png" }],
+    apple: [{ url: "/brand/grow2gether-icon.png", sizes: "180x180" }],
   },
   robots: { index: true, follow: true },
 };

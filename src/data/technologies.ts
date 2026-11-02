@@ -1,5 +1,3 @@
-import type { Technology } from "@/lib/types";
-
 export const technologiesIntro = {
   eyebrow: "Stack",
   titleTop: "Tools behind",
@@ -46,13 +44,3 @@ export const technologySpotlight = {
     "No matter the stack, the work stays consistent, refined, responsive, and built to perform.",
   cta: { label: "See the work", href: "/works" },
 };
-
-export const technologies: Technology[] = [
-  { name: "Next.js", group: "Websites", brand: "#000000", logo: "/tech/nextjs.svg" },
-  { name: "React", group: "Apps", brand: "#000000", logo: "/tech/react.svg" },
-  { name: "TypeScript", group: "Apps", brand: "#000000", logo: "/tech/typescript.svg" },
-  { name: "JavaScript", group: "Websites", brand: "#000000", logo: "/tech/javascript.svg" },
-  { name: "Node.js", group: "Apps", brand: "#000000", logo: "/tech/nodejs.svg" },
-  { name: "PostgreSQL", group: "Data", brand: "#000000", logo: "/tech/postgresql.svg" },
-  { name: "Git", group: "Delivery", brand: "#000000", logo: "/tech/git.svg" },
-];

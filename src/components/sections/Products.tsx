@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { products, productsIntro } from "@/data/products";
-import { images } from "@/data/images";
+import { projectStills } from "@/data/images";
 import { LaptopMockup } from "@/components/mockups/LaptopMockup";
 import { PhoneMockup } from "@/components/mockups/PhoneMockup";
 import { isTouchDevice, prefersReducedMotion } from "@/lib/motion";
@@ -46,9 +46,9 @@ export function Products() {
             onMouseLeave={onLeave}
           >
             <div aria-hidden>
-              <LaptopMockup image={images.amrut.dashboard} />
+              <LaptopMockup image={projectStills.zynovate} />
               <div className="absolute bottom-12 right-2 w-[25%] transition-transform duration-300 hover:-translate-y-3 md:bottom-16">
-                <PhoneMockup image={images.amrut.mobileHome} />
+                <PhoneMockup image={projectStills.silverStitch} />
               </div>
             </div>
             <p className="eyebrow mt-8 text-center text-muted-foreground">{productsIntro.exampleLabel}</p>

@@ -2,6 +2,8 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { site } from "@/data/site";
+import { projects } from "@/data/projects";
+import { testimonials } from "@/data/testimonials";
 import { BulgeHeading } from "@/components/motion/BulgeHeading";
 import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
 import { cn } from "@/lib/utils";
@@ -11,11 +13,10 @@ const jost = "var(--font-jost), ui-sans-serif, system-ui, sans-serif";
 const media =
   "origin-center transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform hover:scale-[1.07]";
 
-const faces = [
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=96&h=96&q=80",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=96&h=96&q=80",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=96&h=96&q=80",
-];
+const faces = projects
+  .filter((project) => project.preview)
+  .slice(0, 3)
+  .map((project) => ({ src: project.preview!.src, alt: project.title }));
 
 const appPhoto =
   "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=240&h=240&q=80";
@@ -248,15 +249,15 @@ export function Hero() {
           <div className="flex shrink-0 flex-wrap items-center gap-[clamp(1rem,2vw,1.75rem)] md:flex-nowrap">
             <div className="flex items-center gap-3">
               <span className={cn(media, "flex items-center")}>
-                {faces.map((src, index) => (
+                {faces.map((face, index) => (
                   <img
-                    key={src}
-                    src={src}
-                    alt=""
+                    key={face.src}
+                    src={face.src}
+                    alt={face.alt}
                     width={48}
                     height={48}
                     className={cn(
-                      "size-[clamp(2.4rem,3.9vw,3.6rem)] rounded-full object-cover ring-2 ring-white",
+                      "size-[clamp(2.4rem,3.9vw,3.6rem)] rounded-full object-cover object-top ring-2 ring-white",
                       index > 0 && "-ml-[clamp(0.6rem,1vw,0.9rem)]",
                     )}
                   />
@@ -264,21 +265,24 @@ export function Hero() {
               </span>
               <span className="flex flex-col gap-1">
                 <Stars />
-                <span className="whitespace-nowrap text-[clamp(0.75rem,1.05vw,1rem)] text-[#333]">5 out of 5 stars</span>
+                <span className="whitespace-nowrap text-[clamp(0.75rem,1.05vw,1rem)] text-[#333]">
+                  5 out of 5 · {testimonials.length} reviews
+                </span>
               </span>
             </div>
             <a
               href={hero.featured.href}
-              onClick={go(hero.featured.href)}
               className={cn(
                 media,
                 "inline-flex shrink-0 items-center gap-[clamp(0.5rem,0.8vw,0.75rem)] rounded-[8px] border border-black/[0.12] bg-white px-[clamp(0.65rem,1vw,1rem)] py-[clamp(0.45rem,0.75vw,0.7rem)]",
               )}
             >
-              <span className="text-[clamp(1.35rem,2.5vw,2.3rem)] font-semibold leading-none tracking-[-0.06em]">W.</span>
+              <span className="text-[clamp(1.2rem,2.1vw,1.9rem)] font-semibold leading-none tracking-[-0.06em]">
+                {String(projects.length).padStart(2, "0")}
+              </span>
               <span className="text-left leading-[1.15]">
-                <span className="block text-[clamp(0.6rem,0.85vw,0.85rem)] text-[#555]">Awwwards</span>
-                <span className="block text-[clamp(0.72rem,1.05vw,1rem)] font-semibold">Nominated</span>
+                <span className="block text-[clamp(0.6rem,0.85vw,0.85rem)] text-[#555]">{hero.featured.label}</span>
+                <span className="block text-[clamp(0.72rem,1.05vw,1rem)] font-semibold">{hero.featured.title}</span>
               </span>
             </a>
           </div>
