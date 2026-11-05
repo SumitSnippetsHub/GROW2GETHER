@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SiteShell } from "@/components/layout/SiteShell";
+import { RelightingImages } from "@/components/sections/RelightingImages";
 import { WorksIndex } from "@/components/sections/WorksIndex";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export default function WorksPage() {
   return (
     <SiteShell>
       <WorksIndex />
+      <RelightingImages />
     </SiteShell>
   );
 }
