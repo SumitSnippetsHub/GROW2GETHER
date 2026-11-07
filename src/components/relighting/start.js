@@ -13,7 +13,7 @@ import { setupTextures } from "./effect/textures.js";
 const MAX_PIXEL_RATIO = 2;
 const VIEW_HEIGHT = 4;
 
-export async function startRelighting(container, demoId = "demo1") {
+export async function startRelighting(container, demoId = "maker") {
   if (!container) throw new Error("Missing relighting container");
   if (!navigator.gpu) throw new Error("WebGPU is not available");
 

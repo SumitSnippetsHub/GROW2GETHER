@@ -1,12 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-const DEMOS = [
-  { id: "demo1", label: "demo 1" },
-  { id: "demo2", label: "demo 2" },
-  { id: "demo3", label: "demo 3" },
-] as const;
+import { relightingScenes, type RelightingSceneId } from "@/data/relighting";
 
 type RelightingApi = {
   setDemo: (id: string) => Promise<void>;
@@ -16,8 +11,9 @@ type RelightingApi = {
 export function RelightingImages() {
   const appRef = useRef<HTMLDivElement>(null);
   const apiRef = useRef<RelightingApi | null>(null);
-  const [demo, setDemo] = useState<(typeof DEMOS)[number]["id"]>("demo1");
+  const [sceneId, setSceneId] = useState<RelightingSceneId>(relightingScenes[0].id);
   const [failed, setFailed] = useState(false);
+  const scene = relightingScenes.find((item) => item.id === sceneId) ?? relightingScenes[0];
 
   useEffect(() => {
     const container = appRef.current;
@@ -28,7 +24,7 @@ export function RelightingImages() {
     void (async () => {
       try {
         const { startRelighting } = await import("@/components/relighting/start.js");
-        const api = await startRelighting(container, demo);
+        const api = await startRelighting(container, sceneId);
         if (cancelled) {
           api.dispose();
           return;
@@ -44,47 +40,28 @@ export function RelightingImages() {
       apiRef.current?.dispose();
       apiRef.current = null;
     };
-    // Start once; demo changes go through setDemo on the running renderer.
+    // Start once; scene changes go through setDemo on the running renderer.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <section id="relighting" className="relighting" aria-label="Relightning Images">
+    <section id="relighting" className="relighting" aria-label="Light the work">
       <div ref={appRef} className="relighting-app" />
-      {failed ? (
-        <img className="relighting-fallback" src="/textures/wall.jpg" alt="" />
-      ) : null}
-      <aside className="relighting-info">
-        <h2>Relightning Images by Dominik Fojcik</h2>
-        <nav className="relighting-project-links" aria-label="Project links">
-          <a href="https://tympanus.net/codrops/?p=119000" target="_blank" rel="noreferrer">
-            Article
-          </a>
-          <a href="https://github.com/DGFX/codrops-relightning-images" target="_blank" rel="noreferrer">
-            Code
-          </a>
-          <a href="https://tympanus.net/codrops/demos/" target="_blank" rel="noreferrer">
-            All Demos
-          </a>
-        </nav>
-        <nav className="relighting-tags" aria-label="Tags">
-          <a href="https://tympanus.net/codrops/demos/?tag=3d" target="_blank" rel="noreferrer">
-            #3d
-          </a>
-          <a href="https://tympanus.net/codrops/demos/?tag=three-js" target="_blank" rel="noreferrer">
-            #three.js
-          </a>
-        </nav>
-      </aside>
-      <nav className="relighting-nav" aria-label="Relightning demos">
-        {DEMOS.map((item) => (
+      {failed ? <img className="relighting-fallback" src={scene.map} alt="" /> : null}
+      <p className="relighting-brand">grow2gether</p>
+      <div className="relighting-copy">
+        <h2>{scene.title}</h2>
+        <p>{scene.hint}</p>
+      </div>
+      <nav className="relighting-nav" aria-label="Work to light">
+        {relightingScenes.map((item) => (
           <a
             key={item.id}
             href="#relighting"
-            className={item.id === demo ? "active" : undefined}
+            className={item.id === sceneId ? "active" : undefined}
             onClick={(event) => {
               event.preventDefault();
-              setDemo(item.id);
+              setSceneId(item.id);
               void apiRef.current?.setDemo(item.id);
             }}
           >
