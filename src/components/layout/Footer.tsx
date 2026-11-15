@@ -3,7 +3,8 @@
 import { useEffect, useRef, type MouseEvent } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { ArrowUp } from "lucide-react";
+import { BloomCta } from "@/components/motion/BloomCta";
 
 import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
 import { prefersReducedMotion } from "@/lib/motion";
@@ -145,17 +146,10 @@ export function Footer() {
           </div>
 
           <div data-footer-rise className="flex flex-col items-start gap-6 lg:items-end lg:pb-[0.6rem]">
-            <a
-              href={site.primaryCta.href}
-              onClick={go(site.primaryCta.href)}
-              className="group inline-flex items-center gap-[clamp(1.75rem,3vw,3rem)] whitespace-nowrap rounded-[11px] border border-white bg-white py-[clamp(0.9rem,1.2vw,1.15rem)] pl-[clamp(1.2rem,1.6vw,1.5rem)] pr-[clamp(1rem,1.4vw,1.3rem)] text-[clamp(1rem,1.2vw,1.2rem)] font-medium text-black transition-colors duration-300 hover:bg-transparent hover:text-white"
-            >
-              {site.primaryCta.label}
-              <ArrowUpRight
-                className="size-[1.15em] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                strokeWidth={2}
-              />
-            </a>
+            <BloomCta
+              variant="light"
+              className="text-[clamp(0.85rem,1vw,1rem)]"
+            />
             <a
               href={`mailto:${contact.email}`}
               className="footer-email pb-1 text-[clamp(1.35rem,2.2vw,2.25rem)] font-normal tracking-[-0.025em] text-white"
@@ -275,7 +269,7 @@ export function Footer() {
             <a href="/privacy-policy" className="footer-link hover:text-white">
               Data protection
             </a>
-            <span>Made in Bremen</span>
+            <span>Made in New Delhi</span>
             <button
               type="button"
               suppressHydrationWarning

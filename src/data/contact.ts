@@ -1,9 +1,8 @@
 export const contact = {
-  email: "hello@grow2gether.com",
-  phone: "+49 151 15820939",
-  location: "Sögestraße 74 | 28195 Bremen",
-  mapUrl:
-    "https://www.google.com/maps/search/?api=1&query=S%C3%B6gestra%C3%9Fe%2074%2028195%20Bremen",
+  email: "grow2gether@gmail.com",
+  phone: "99********",
+  location: "New Delhi | India",
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=New+Delhi+India",
   isPlaceholder: false,
   projectTypes: [
     "Website",
@@ -15,19 +14,19 @@ export const contact = {
   ],
   budgetRanges: [
     "Not sure yet",
-    "From €5,900",
-    "€5,900–€15,000",
-    "€15,000–€40,000",
-    "Over €40,000",
+    "From ₹5,900",
+    "₹5,900–₹15,000",
+    "₹15,000–₹40,000",
+    "Over ₹40,000",
   ],
 };
 
 export const countryCodes = [
-  { label: "Germany", code: "+49" },
   { label: "India", code: "+91" },
+  { label: "United Arab Emirates", code: "+971" },
   { label: "United States", code: "+1" },
   { label: "United Kingdom", code: "+44" },
-  { label: "United Arab Emirates", code: "+971" },
+  { label: "Germany", code: "+49" },
   { label: "Netherlands", code: "+31" },
 ] as const;
 
@@ -72,7 +71,7 @@ export const contactFormCopy = {
   intro: "30 minutes · Free initial consultation. Share a few details and we will reply with the next step.",
   name: { label: "Name", placeholder: "Your name" },
   email: { label: "Email", placeholder: "you@company.com" },
-  phone: { label: "Mobile number", placeholder: "+49 151 15820939" },
+  phone: { label: "Mobile number", placeholder: "99********" },
   projectType: { label: "Project type", placeholder: "Select project type" },
   budget: { label: "Budget range", placeholder: "Select budget range" },
   message: {

@@ -168,7 +168,7 @@ export const privacyPolicy = {
       contact: [
         { label: "Company", value: "grow2gether" },
         { label: "Website", value: "grow2gether.com", href: "https://grow2gether.com" },
-        { label: "Email", value: "hello@grow2gether.com", href: "mailto:hello@grow2gether.com" },
+        { label: "Email", value: "grow2gether@gmail.com", href: "mailto:grow2gether@gmail.com" },
       ],
       footer:
         "We will make reasonable efforts to respond to privacy-related requests within the time period required under applicable law.",

@@ -185,7 +185,7 @@ const inclusion = (
   summary,
   overview: [
     summary,
-    "It is part of the project, not an add-on you discover on the invoice. Individual work starts from €5,900, and the fixed price is agreed before we start.",
+    "It is part of the project, not an add-on you discover on the invoice. Individual work starts from ₹5,900, and the fixed price is agreed before we start.",
   ],
   highlights: [{ title, description: summary }],
   process: sharedProcess,

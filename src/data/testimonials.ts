@@ -3,43 +3,58 @@ import type { Testimonial } from "@/lib/types";
 export const testimonialsIntro = {
   eyebrow: "Reviews",
   title: "What our partners say.",
-  description: "We can tell a lot. Our clients can tell it better.",
+  description: "We can tell a lot. The companies we built for can tell it better.",
 };
 
 export const testimonials: Testimonial[] = [
   {
-    role: "Larisa · Grechow's Beauty",
+    role: "SeatsBrokers · B2B ticketing",
     quote:
-      "Since the new website and the automations have been running, a lot simply happens by itself. My sales volume has tripled, and I still have more time today.",
+      "The public site finally explains the broker desk the way we sell it — inventory, pricing, orders and settlement in one story, without exposing the internal systems.",
   },
   {
-    role: "Falk Strecker",
+    role: "SeatsConnect · B2B distribution",
     quote:
-      "Business website and shop from one team. Especially valued: the support at the start and the implementation of his own wishes.",
+      "Partners can see search, quote, book and fulfil as a clear path. Supply and demand sit in the right places, and enquiries stay inside the partner workflow.",
   },
   {
-    role: "Michael Jentzsch",
+    role: "The Silver Stitch · Designer blouses",
     quote:
-      "Two websites delivered. Flexible adjustments, current expertise and a collaboration on equal footing, until the result really fits.",
+      "The collection is online with prices, studio story and a simple way to ask about a custom blouse. It looks like the brand, not a template shop.",
   },
   {
-    role: "Tobias B.",
+    role: "Sumit Tyagi · Tyag Raj Law Firm",
     quote:
-      "Professional, transparent collaboration. The website matches the brief, and change requests were implemented quickly.",
+      "Clients now find the advocates, the courts we cover and both Ghaziabad chambers in plain language. The consultation request opens WhatsApp with the right details.",
   },
   {
-    role: "Saagon Fobissie",
+    role: "Tyagi & Associates · Delhi NCR",
     quote:
-      "Friendly, structured communication and fast replies. Individual requirements stay at the center of the work.",
+      "Practice areas, the six-step process and chamber details are easy to follow. First-time clients can book a consultation by form, phone or WhatsApp.",
   },
   {
-    role: "Aaron Ethan Grechow",
+    role: "Zenmen · Bespoke tailoring, New Delhi",
     quote:
-      "Smooth collaboration and strong results. For the next project, he would work with grow2gether again.",
+      "The atelier finally has a site that shows the silhouettes, the four-step process and how to book an appointment in Lajpat Nagar. It feels like the house, not a catalogue dump.",
   },
   {
-    role: "Patrick Stamm",
+    role: "Blessing Mens · Groomswear, Delhi",
     quote:
-      "Individual solutions instead of a standard package. New ideas are thought through carefully and implemented, practical and with personal support.",
+      "Sherwanis, bandhgalas and wedding suits are browsable by occasion, with prices on the public catalogue. Distant clients can still ask about consultation or delivery.",
+  },
+  {
+    role: "Anuraag Kaushik · Bridal makeup",
+    quote:
+      "The lookbook, packages and booking contact sit in one place. Bridal, engagement and reception work is easy to understand before anyone writes in.",
+  },
+  {
+    role: "SeatsGroup · Ticketing & live experiences",
+    quote:
+      "The group site positions the family of products without mixing the brands. Partnership and supplier contacts are clear, and the public story matches how we introduce ourselves.",
+  },
+  {
+    role: "Zynovate · Software studio, Noida",
+    quote:
+      "Services, the idea-to-launch process and the Amrut.ai case are all on the site. Enquiries come in by form, email and phone — and the company looks like the studio it is.",
   },
 ];

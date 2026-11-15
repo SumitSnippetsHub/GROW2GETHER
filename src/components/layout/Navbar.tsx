@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 import { contact } from "@/data/contact";
 import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
 import { cn } from "@/lib/utils";
-import { ProjectInquiryModal } from "@/components/layout/ProjectInquiryModal";
+import { useBooking } from "@/components/booking/BookingProvider";
 
 function sectionId(href: string) {
   if (href === "/") return "home";
@@ -33,7 +33,7 @@ export function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
-  const [projectModalOpen, setProjectModalOpen] = useState(false);
+  const booking = useBooking();
   const [lang, setLang] = useState<"DE" | "EN">("EN");
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -181,7 +181,7 @@ export function Navbar() {
             </div>
             <button
               type="button"
-              onClick={() => setProjectModalOpen(true)}
+              onClick={() => booking?.openBooking()}
               className="hidden items-center gap-9 rounded-[10px] bg-[#111] py-[0.7rem] pl-4 pr-3.5 text-[13px] font-medium text-white transition-colors duration-300 hover:bg-black sm:inline-flex"
             >
               {site.primaryCta.label}
@@ -268,7 +268,7 @@ export function Navbar() {
             type="button"
             onClick={() => {
               setOpen(false);
-              setProjectModalOpen(true);
+              booking?.openBooking();
             }}
             tabIndex={open ? 0 : -1}
             className="rounded-full bg-black px-5 py-3 font-medium text-white"
@@ -284,7 +284,6 @@ export function Navbar() {
           {contact.email}
         </a>
       </div>
-      <ProjectInquiryModal open={projectModalOpen} onClose={() => setProjectModalOpen(false)} />
     </>
   );
 }

@@ -39,7 +39,8 @@ describe("App", () => {
     expect(container.querySelector("#process")?.textContent).toContain("Direction & Fixed Price");
     expect(container.querySelector("#process")?.textContent).toContain("Launch & Support");
     expect(container.querySelectorAll("#testimonials")).toHaveLength(1);
-    expect(container.querySelector("#testimonials")?.textContent).toContain("Larisa");
+    expect(container.querySelector("#testimonials")?.textContent).toContain("Anuraag Kaushik");
+    expect(container.querySelector("#testimonials")?.textContent).toContain("Zynovate");
     expect(container.querySelector("#testimonials")?.textContent).toContain("5 out of 5 stars");
     expect(container.querySelectorAll("#faq")).toHaveLength(1);
     expect(container.querySelector("#faq")?.textContent).toContain("Which digital services does grow2gether offer?");

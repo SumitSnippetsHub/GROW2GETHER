@@ -21,7 +21,7 @@ export const about = {
     {
       label: "How we price",
       heading: "A fixed price before we start.",
-      body: "We talk openly about money before we start, not only when the bill arrives. Individual solutions start from €5,900. After a free 30-minute conversation, you receive the fixed price.",
+      body: "We talk openly about money before we start, not only when the bill arrives. Individual solutions start from ₹5,900. After a free 30-minute conversation, you receive the fixed price.",
     },
   ],
   scrub:

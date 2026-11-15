@@ -13,7 +13,7 @@ const content = {
     title: "Individual websites, shops and apps.",
     description:
       "Quality and personal cooperation. You talk to the founders, and the price is fixed before the work starts.",
-    detail: "Direct · Fixed price · From €5,900",
+    detail: "Direct · Fixed price · From ₹5,900",
   },
   services: {
     number: "Solutions",
@@ -24,7 +24,7 @@ const content = {
   },
   products: {
     number: "Investment",
-    title: "Great results from €5,900.",
+    title: "Great results from ₹5,900.",
     description:
       "30 minutes, free of charge. You receive the fixed price afterwards. Design, devices, privacy, checks and handover are part of the project.",
     detail: "Fixed price · Agreed before we start",

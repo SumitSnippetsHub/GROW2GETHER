@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { images } from "@/data/images";
 import { DotField } from "@/components/motion/DotField";
-import { ProjectInquiryModal } from "@/components/layout/ProjectInquiryModal";
+import { useBooking } from "@/components/booking/BookingProvider";
 import {
   Accordion,
   AccordionContent,
@@ -76,7 +76,7 @@ const productGraphics: Record<string, React.ComponentType<{ className?: string }
 };
 
 export function DetailPageView({ item, type, allItems }: DetailPageViewProps) {
-  const [modalOpen, setModalOpen] = useState(false);
+  const booking = useBooking();
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -176,7 +176,7 @@ export function DetailPageView({ item, type, allItems }: DetailPageViewProps) {
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => setModalOpen(true)}
+                  onClick={() => booking?.openBooking()}
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs sm:text-sm font-semibold text-primary-foreground shadow-md transition-transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   <span>{item.cta.button}</span>
@@ -597,7 +597,7 @@ export function DetailPageView({ item, type, allItems }: DetailPageViewProps) {
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <button
                     type="button"
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => booking?.openBooking()}
                     className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5 active:translate-y-0"
                   >
                     <span>{item.cta.button}</span>
@@ -668,7 +668,6 @@ export function DetailPageView({ item, type, allItems }: DetailPageViewProps) {
       </div>
 
       {/* Inquiry Dialog Modal */}
-      <ProjectInquiryModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 }

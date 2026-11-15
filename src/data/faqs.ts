@@ -40,7 +40,7 @@ export const faqs: Faq[] = [
   {
     question: "What does working with grow2gether cost?",
     answer:
-      "Individual solutions start from €5,900. A first conversation is 30 minutes and free. You receive the fixed price afterwards.",
+      "Individual solutions start from ₹5,900. A first conversation is 30 minutes and free. You receive the fixed price afterwards.",
   },
   {
     question: "How quickly can we get started together?",

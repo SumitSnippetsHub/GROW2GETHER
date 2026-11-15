@@ -1,11 +1,10 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { site } from "@/data/site";
 import { projects } from "@/data/projects";
 import { testimonials } from "@/data/testimonials";
+import { BloomCta } from "@/components/motion/BloomCta";
 import { BulgeHeading } from "@/components/motion/BulgeHeading";
-import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
 import { cn } from "@/lib/utils";
 
 const jost = "var(--font-jost), ui-sans-serif, system-ui, sans-serif";
@@ -156,14 +155,7 @@ function Stars() {
 
 export function Hero() {
   const { hero } = site;
-  const { scrollTo } = useSmoothScroll();
 
-  const go = (href: string) => (e: React.MouseEvent) => {
-    const hash = href.startsWith("#") ? href : href.startsWith("/#") ? `#${href.split("#")[1]}` : null;
-    if (!hash) return;
-    e.preventDefault();
-    scrollTo(document.querySelector(hash) ? hash : window.innerHeight);
-  };
 
   return (
     <section
@@ -233,16 +225,11 @@ export function Hero() {
           </p>
 
           <div className="flex shrink-0 flex-col items-start gap-2.5 xl:items-center">
-            <a
-              href={site.primaryCta.href}
-              onClick={go(site.primaryCta.href)}
-              className="inline-flex items-center whitespace-nowrap gap-[clamp(1.5rem,3.4vw,3.5rem)] rounded-[11px] bg-[#111] py-[clamp(0.8rem,1.2vw,1.1rem)] pl-[clamp(1.1rem,1.6vw,1.5rem)] pr-[clamp(1rem,1.4vw,1.3rem)] text-[clamp(0.85rem,1.2vw,1.15rem)] font-medium text-white transition-colors duration-300 hover:bg-black"
-            >
-              {site.primaryCta.label}
-              <ArrowUpRight className="size-[clamp(0.9rem,1.2vw,1.15rem)]" strokeWidth={2} />
-            </a>
+            <BloomCta
+              className="text-[clamp(0.8rem,0.95vw,0.95rem)]"
+            />
             <p className="whitespace-nowrap text-[clamp(0.8rem,1vw,1rem)] text-[#555]">
-              Individual solutions starting from €5900
+              Individual solutions starting from ₹5900
             </p>
           </div>
 

@@ -13,7 +13,7 @@ export const site = {
     "Custom-designed websites, shops and apps that generate more qualified inquiries.",
   logo: { src: "/brand/grow2gether-logo.png", alt: "grow2gether", width: 857, height: 212 },
   primaryCta: { label: "Discuss your project", href: "/#contact" as const },
-  secondaryCta: { label: "From €5,900", href: "/#products" as const },
+  secondaryCta: { label: "From ₹5,900", href: "/#products" as const },
   trustLine: ["Websites", "Shops", "Apps", "Automations"],
 
   hero: {
@@ -40,7 +40,7 @@ export const site = {
       },
     ],
     tracks: [
-      { label: "From €5,900", text: "Individual solutions, transparent fixed price" },
+      { label: "From ₹5,900", text: "Individual solutions, transparent fixed price" },
       { label: "30 minutes", text: "Free conversation. The fixed price comes after." },
     ],
     featured: {

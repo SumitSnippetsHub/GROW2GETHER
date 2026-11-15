@@ -3,10 +3,8 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
-import { site } from "@/data/site";
-import { inclusions, investmentIntro } from "@/data/investment";
-import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
+import { BloomCta } from "@/components/motion/BloomCta";
+import { inclusions, investmentIntro } from "@/data/investment";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +15,7 @@ const ease = "ease-[cubic-bezier(0.16,1,0.3,1)]";
 const easeCss = "cubic-bezier(0.16,1,0.3,1)";
 const CYCLE_MS = 4200;
 
-const formatPrice = (value: number) => `€${value.toLocaleString("en-US")}`;
+const formatPrice = (value: number) => `₹${value.toLocaleString("en-IN")}`;
 
 function Rich({ text }: { text: string }) {
   return (
@@ -226,16 +224,9 @@ function InclusionList() {
 
 export function Investment() {
   const root = useRef<HTMLElement>(null);
-  const price = useRef<HTMLSpanElement>(null);
-  const { scrollTo } = useSmoothScroll();
+  const price = useRef<HTMLSpanElement>(null);
   const priced = investmentIntro.price > 0;
 
-  const go = (href: string) => (e: React.MouseEvent) => {
-    const hash = href.startsWith("#") ? href : href.startsWith("/#") ? `#${href.split("#")[1]}` : null;
-    if (!hash) return;
-    e.preventDefault();
-    scrollTo(document.querySelector(hash) ? hash : window.innerHeight);
-  };
 
   useEffect(() => {
     if (!root.current || prefersReducedMotion()) return;
@@ -342,14 +333,7 @@ export function Investment() {
               {investmentIntro.lead}
             </p>
             <div data-inv-reveal className="mt-[clamp(1.5rem,2.6vw,2.5rem)] flex flex-col items-start gap-3 lg:items-end">
-              <a
-                href={site.primaryCta.href}
-                onClick={go(site.primaryCta.href)}
-                className="inline-flex items-center gap-[clamp(1.5rem,2.6vw,2.75rem)] whitespace-nowrap rounded-[11px] bg-[#111] py-[clamp(0.8rem,1.05vw,1rem)] pl-[clamp(1.05rem,1.35vw,1.35rem)] pr-[clamp(0.95rem,1.2vw,1.15rem)] text-[clamp(0.9rem,1.05vw,1.05rem)] font-medium text-white transition-colors duration-300 hover:bg-black"
-              >
-                {site.primaryCta.label}
-                <ArrowUpRight className="size-[clamp(0.95rem,1.1vw,1.1rem)]" strokeWidth={2} />
-              </a>
+              <BloomCta />
               <p className="max-w-[22rem] text-[clamp(0.88rem,0.95vw,0.95rem)] leading-[1.5] text-[#666]">
                 {investmentIntro.note}
               </p>

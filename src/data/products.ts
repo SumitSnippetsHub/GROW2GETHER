@@ -6,7 +6,7 @@ export type { DetailPage, Highlight, Step, Faq };
 
 export const productsIntro = {
   eyebrow: "Investment",
-  title: "Great results from €5,900.",
+  title: "Great results from ₹5,900.",
   description:
     "Custom software, tailored to your goals and processes. 30 minutes, free of charge. You receive the fixed price afterwards.",
   exampleLabel: "Included with the project",

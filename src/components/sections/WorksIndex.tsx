@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
+import { BloomCta } from "@/components/motion/BloomCta";
 import { IntroBackdrop } from "@/components/motion/IntroBackdrop";
 import { site } from "@/data/site";
 import { projects, workIntro } from "@/data/projects";
@@ -208,13 +208,7 @@ export function WorksIndex() {
 
       <div className="relative z-10 mt-[clamp(3.5rem,7vw,6rem)] flex flex-col items-center gap-4 text-center">
         <p className="text-[clamp(1.15rem,1.6vw,1.45rem)] tracking-[-0.02em]">Have a project in mind?</p>
-        <a
-          href={site.primaryCta.href}
-          className="inline-flex items-center gap-10 rounded-[11px] bg-[#111] py-[0.85rem] pl-5 pr-4 text-[0.95rem] font-medium text-white transition-colors duration-300 hover:bg-black"
-        >
-          {site.primaryCta.label}
-          <ArrowUpRight className="size-4" strokeWidth={2} />
-        </a>
+        <BloomCta href={site.primaryCta.href} />
       </div>
     </section>
   );

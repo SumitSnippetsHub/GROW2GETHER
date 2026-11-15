@@ -3,10 +3,8 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
-import { site } from "@/data/site";
-import { solutions, solutionsIntro, type Solution, type SolutionTone } from "@/data/solutions";
-import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
+import { BloomCta } from "@/components/motion/BloomCta";
+import { solutions, solutionsIntro, type Solution, type SolutionTone } from "@/data/solutions";
 import { ToolIcon } from "@/components/sections/solutions/ToolIcon";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -107,15 +105,8 @@ function SolutionCard({ solution, side }: { solution: Solution; side: "left" | "
 }
 
 export function Solutions() {
-  const root = useRef<HTMLElement>(null);
-  const { scrollTo } = useSmoothScroll();
+  const root = useRef<HTMLElement>(null);
 
-  const go = (href: string) => (e: React.MouseEvent) => {
-    const hash = href.startsWith("#") ? href : href.startsWith("/#") ? `#${href.split("#")[1]}` : null;
-    if (!hash) return;
-    e.preventDefault();
-    scrollTo(document.querySelector(hash) ? hash : window.innerHeight);
-  };
 
   useEffect(() => {
     if (!root.current || prefersReducedMotion()) return;
@@ -172,14 +163,9 @@ export function Solutions() {
           ))}
         </div>
 
-        <a
-          href={site.primaryCta.href}
-          onClick={go(site.primaryCta.href)}
-          className="mt-[clamp(1.5rem,2.5vw,2.25rem)] inline-flex items-center gap-[clamp(1.5rem,2.6vw,2.75rem)] whitespace-nowrap rounded-[11px] bg-[#111] py-[clamp(0.75rem,1vw,0.95rem)] pl-[clamp(1rem,1.3vw,1.3rem)] pr-[clamp(0.9rem,1.15vw,1.1rem)] text-[clamp(0.85rem,1vw,1rem)] font-medium text-white transition-colors duration-300 hover:bg-black"
-        >
-          {site.primaryCta.label}
-          <ArrowUpRight className="size-[clamp(0.9rem,1.05vw,1.05rem)]" strokeWidth={2} />
-        </a>
+        <BloomCta
+          className="mt-[clamp(1.5rem,2.5vw,2.25rem)]"
+        />
       </div>
     </section>
   );

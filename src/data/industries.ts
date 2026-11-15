@@ -33,7 +33,7 @@ const partners = [
   "Remco",
   "Müller Therapy Practice",
   "Holiday apartments at Brill",
-  "University of Bremen",
+  "University of Delhi",
   "Clickless",
   "Life Lounge & Bar",
   "Oxzy",

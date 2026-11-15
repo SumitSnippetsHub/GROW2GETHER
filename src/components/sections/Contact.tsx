@@ -570,7 +570,7 @@ export function Contact() {
                       name="phone"
                       type="tel"
                       label="Mobile number"
-                      placeholder="98765 43210"
+                      placeholder={contactFormCopy.phone.placeholder}
                       value={values.phone}
                       autoComplete="tel-national"
                       error={errors.phone}
