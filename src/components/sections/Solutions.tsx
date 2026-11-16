@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BloomCta } from "@/components/motion/BloomCta";
-import { solutions, solutionsIntro, type Solution, type SolutionTone } from "@/data/solutions";
+import { solutions, solutionsIntro, type Solution, type SolutionTone } from "@/data/solutions";
+
 import { ToolIcon } from "@/components/sections/solutions/ToolIcon";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -105,7 +106,8 @@ function SolutionCard({ solution, side }: { solution: Solution; side: "left" | "
 }
 
 export function Solutions() {
-  const root = useRef<HTMLElement>(null);
+  const root = useRef<HTMLElement>(null);
+
 
 
   useEffect(() => {

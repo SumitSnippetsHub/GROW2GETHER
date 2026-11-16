@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BloomCta } from "@/components/motion/BloomCta";
-import { faqIntro, faqs } from "@/data/faqs";
+import { faqIntro, faqs } from "@/data/faqs";
+
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +33,8 @@ function PlusMinus({ open }: { open: boolean }) {
 
 export function Faq() {
   const root = useRef<HTMLElement>(null);
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(0);
+
 
 
   useEffect(() => {

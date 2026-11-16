@@ -25,7 +25,7 @@ export interface Solution {
 export const solutionsIntro = {
   titleTop: "High-quality",
   titleBottom: "Software solutions",
-  description: "From websites to digital products: Benefit from our many years of experience.",
+  description: "From websites to digital products, each one built around what your business actually needs.",
 };
 
 export const solutions: Solution[] = [

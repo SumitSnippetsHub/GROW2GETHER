@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 
 import { SiteShell } from "@/components/layout/SiteShell";
 import { privacyPolicy } from "@/data/privacy";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
-  description: "Learn how grow2gether collects, uses, stores, and protects personal information.",
-  alternates: { canonical: "/privacy-policy" },
-};
+  description: "How grow2gether collects, uses, stores and protects personal information shared through this website.",
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   return (

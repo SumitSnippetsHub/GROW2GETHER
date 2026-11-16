@@ -17,8 +17,7 @@ const faces = projects
   .slice(0, 3)
   .map((project) => ({ src: project.preview!.src, alt: project.title }));
 
-const appPhoto =
-  "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=240&h=240&q=80";
+const appPhoto = "/projects/zenmen.jpg";
 
 function Tile({ children }: { children: React.ReactNode }) {
   return (

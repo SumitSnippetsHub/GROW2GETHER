@@ -17,7 +17,14 @@ import {
   Sparkles,
   ShieldCheck,
 } from "lucide-react";
-import { images } from "@/data/images";
+import { projectStills } from "@/data/images";
+
+const STILL_FOR: Record<string, keyof typeof projectStills> = {
+  websites: "tyagiAssociates",
+  shops: "silverStitch",
+  apps: "seatsBrokers",
+  automations: "seatsConnect",
+};
 import { DotField } from "@/components/motion/DotField";
 import { useBooking } from "@/components/booking/BookingProvider";
 import {
@@ -77,6 +84,7 @@ const productGraphics: Record<string, React.ComponentType<{ className?: string }
 
 export function DetailPageView({ item, type, allItems }: DetailPageViewProps) {
   const booking = useBooking();
+  const still = projectStills[STILL_FOR[item.slug] ?? "zenmen"];
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -366,13 +374,15 @@ export function DetailPageView({ item, type, allItems }: DetailPageViewProps) {
                 </div>
                 <figure className="mt-7 overflow-hidden rounded-2xl border border-[#E8DDD1] bg-white shadow-2xs">
                   <img
-                    src={images.why.src}
-                    alt="A calm, considered workspace representing the planning behind the project"
-                    className="h-40 w-full object-cover sm:h-48"
+                    src={still.src}
+                    alt={still.alt}
+                    width={still.width}
+                    height={still.height}
+                    className="h-40 w-full object-cover object-top sm:h-48"
                     loading="lazy"
                   />
                   <figcaption className="px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                    Thoughtful systems. Practical outcomes.
+                    Live project · {still.alt.split(" homepage")[0]}
                   </figcaption>
                 </figure>
               </div>

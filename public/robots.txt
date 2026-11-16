@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://grow2gether.com/sitemap.xml

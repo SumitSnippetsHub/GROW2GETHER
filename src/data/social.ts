@@ -1,9 +1,4 @@
 import type { SocialLink } from "@/lib/types";
 
-// TODO: replace with client content
-export const social: SocialLink[] = [
-  { label: "LinkedIn", href: "#", isPlaceholder: true },
-  { label: "GitHub", href: "#", isPlaceholder: true },
-  { label: "Instagram", href: "#", isPlaceholder: true },
-  { label: "X", href: "#", isPlaceholder: true },
-];
+// Add real profile URLs here; the footer shows this list only when it is not empty.
+export const social: SocialLink[] = [];

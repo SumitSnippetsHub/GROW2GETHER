@@ -45,7 +45,6 @@ import {
   CustomerFacing3D,
   CustomDigital3D,
 } from "./Product3DGraphics";
-import { images } from "@/data/images";
 import { cn } from "@/lib/utils";
 
 interface VisualShowcaseWidgetProps {
@@ -91,7 +90,7 @@ export function VisualShowcaseWidget({ slug, title, type }: VisualShowcaseWidget
               <span className="flex size-3 rounded-full bg-[#E17A47]" />
               <span className="flex size-3 rounded-full bg-[#E8B87C]" />
               <span className="flex size-3 rounded-full bg-[#82B29A]" />
-              <span className="ml-3 font-mono text-xs text-muted-foreground">grow2gether.com/app-preview</span>
+              <span className="ml-3 font-mono text-xs text-muted-foreground">grow2gether.in/app-preview</span>
             </div>
             <div className="flex items-center gap-2">
               <button
@@ -399,7 +398,7 @@ export function VisualShowcaseWidget({ slug, title, type }: VisualShowcaseWidget
                 <div className="rounded-xl bg-[#FAF5F0] p-3">
                   <p className="text-[10px] text-muted-foreground">Monthly Recurring Revenue</p>
                   <p className="font-mono text-base font-bold text-foreground">
-                    {saasTier === "growth" ? "$24,500" : "$98,400"}
+                    {saasTier === "growth" ? "₹2,45,000" : "₹9,84,000"}
                   </p>
                   <span className="text-[10px] text-emerald-600 font-semibold">+18% this month</span>
                 </div>

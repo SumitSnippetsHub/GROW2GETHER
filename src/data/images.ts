@@ -1,29 +1,5 @@
 import type { ImageAsset } from "@/lib/types";
 
-const unsplash = (id: string, width: number, height: number) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&h=${height}&q=80`;
-
-export const images = {
-  /** Open Graph / Twitter card: the hero photo cropped to 1200×630. */
-  og: {
-    src: unsplash("photo-1497366216548-37526070297c", 1200, 630),
-    width: 1200,
-    height: 630,
-    alt: "grow2gether — websites, shops and apps.",
-    credit: "Unsplash",
-    isPlaceholder: true,
-  },
-  /** Decorative section backgrounds: empty alt so screen readers skip them. */
-  why: {
-    src: unsplash("photo-1618221195710-dd6b41faaea6", 2400, 1600),
-    width: 2400,
-    height: 1600,
-    alt: "",
-    credit: "Unsplash",
-    isPlaceholder: true,
-  },
-} satisfies Record<string, ImageAsset>;
-
 export const projectStills = {
   seatsBrokers: shot("/projects/seats-brokers.jpg", "SeatsBrokers homepage — technology powering professional broker operations"),
   seatsConnect: shot("/projects/seats-connect.jpg", "SeatsConnect homepage — global events, one B2B connection"),

@@ -1031,8 +1031,19 @@
   display: inline-flex;
   align-items: center;
   gap: 0.18em;
-  margin: 0 0.35em 0 auto;
-  padding-left: 1.1em;
+  max-width: 0;
+  margin: 0 0 0 0.6em;
+  overflow-x: clip;
+  overflow-y: visible;
+  transition:
+    max-width 0.5s var(--bloom-ease),
+    margin 0.5s var(--bloom-ease);
+}
+
+.bloom-cta:hover .bloom-cta__typing,
+.bloom-cta:focus-visible .bloom-cta__typing {
+  max-width: 1.4em;
+  margin: 0 0.45em 0 0.75em;
 }
 
 .bloom-cta__typing i {
@@ -1203,7 +1214,8 @@
     animation: none;
   }
 
-  .bloom-cta__clover {
+  .bloom-cta__clover,
+  .bloom-cta__typing {
     transition: none;
   }
 }

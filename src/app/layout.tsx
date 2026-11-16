@@ -2,8 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, JetBrains_Mono, Jost, Mona_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 
-import { images } from "@/data/images";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/data/site";
+import { graph, organizationSchema, websiteSchema } from "@/lib/schema";
+import { OG_IMAGE } from "@/lib/seo";
 
 import "@/styles.css";
 
@@ -35,40 +37,58 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains",
 });
 
-const ogImage = {
-  url: images.og.src,
-  width: images.og.width,
-  height: images.og.height,
-  alt: images.og.alt,
-};
+const googleVerification = process.env["NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION"];
+const bingVerification = process.env["NEXT_PUBLIC_BING_SITE_VERIFICATION"];
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: site.title, template: `%s — ${site.name}` },
+  title: { default: site.title, template: `%s | ${site.name}` },
   description: site.metaDescription,
+  keywords: site.keywords,
   applicationName: site.name,
-  authors: [{ name: site.name }],
-  alternates: { canonical: "/" },
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  category: "technology",
+  formatDetection: { telephone: false, email: false, address: false },
   openGraph: {
     type: "website",
     url: "/",
     siteName: site.name,
     title: site.title,
-    description: site.description,
-    locale: "en_US",
-    images: [ogImage],
+    description: site.metaDescription,
+    locale: site.locale,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: site.title,
-    description: site.description,
-    images: [ogImage],
+    description: site.metaDescription,
+    images: [OG_IMAGE.url],
   },
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }],
     apple: [{ url: "/brand/grow2gether-icon.png", sizes: "180x180" }],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  ...(googleVerification || bingVerification
+    ? {
+        verification: {
+          ...(googleVerification ? { google: googleVerification } : {}),
+          ...(bingVerification ? { other: { "msvalidate.01": bingVerification } } : {}),
+        },
+      }
+    : {}),
 };
 
 export const viewport: Viewport = {
@@ -79,11 +99,14 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className={`${monaSans.variable} ${jost.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        <JsonLd data={graph(organizationSchema(), websiteSchema())} />
+        {children}
+      </body>
     </html>
   );
 }

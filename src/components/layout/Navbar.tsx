@@ -34,7 +34,6 @@ export function Navbar() {
   const [active, setActive] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
   const booking = useBooking();
-  const [lang, setLang] = useState<"DE" | "EN">("EN");
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const wasOpen = useRef(false);
@@ -161,24 +160,6 @@ export function Navbar() {
           </ul>
 
           <div className="flex shrink-0 items-center gap-3 sm:gap-6">
-            <div className="hidden items-center gap-2.5 text-[13px] font-medium sm:flex" aria-label="Language">
-              {(["DE", "EN"] as const).map((code, index) => (
-                <span key={code} className="flex items-center gap-2.5">
-                  {index > 0 ? <span aria-hidden className="h-3.5 w-px bg-black/25" /> : null}
-                  <button
-                    type="button"
-                    onClick={() => setLang(code)}
-                    aria-pressed={lang === code}
-                    className={cn(
-                      "underline-offset-[5px] transition-colors",
-                      lang === code ? "font-semibold text-black underline decoration-[1.5px]" : "text-black/70 hover:text-black",
-                    )}
-                  >
-                    {code}
-                  </button>
-                </span>
-              ))}
-            </div>
             <button
               type="button"
               onClick={() => booking?.openBooking()}
@@ -254,16 +235,7 @@ export function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="flex items-end justify-between gap-4 text-sm text-black/70">
-          <div className="flex items-center gap-2 font-semibold">
-            <button type="button" tabIndex={open ? 0 : -1} onClick={() => setLang("DE")} aria-pressed={lang === "DE"} className={lang === "DE" ? "text-black" : "text-black/35"}>
-              DE
-            </button>
-            <span aria-hidden className="h-4 w-px bg-black/15" />
-            <button type="button" tabIndex={open ? 0 : -1} onClick={() => setLang("EN")} aria-pressed={lang === "EN"} className={lang === "EN" ? "text-black" : "text-black/35"}>
-              EN
-            </button>
-          </div>
+        <div className="flex items-end justify-end gap-4 text-sm text-black/70">
           <button
             type="button"
             onClick={() => {

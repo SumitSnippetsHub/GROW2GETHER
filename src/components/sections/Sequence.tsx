@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BloomCta } from "@/components/motion/BloomCta";
-import { sequence, sequenceIntro, type SequenceStep, type SequenceTone } from "@/data/sequence";
+import { sequence, sequenceIntro, type SequenceStep, type SequenceTone } from "@/data/sequence";
+
 import { useCanPin } from "@/hooks/use-can-pin";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -163,7 +164,8 @@ export function Sequence() {
   const [active, setActive] = useState(0);
   const [stops, setStops] = useState<number[]>([]);
   const enhanced = useCanPin(1024);
-  const railReady = stops.length > 1;
+  const railReady = stops.length > 1;
+
 
 
   useEffect(() => {

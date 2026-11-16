@@ -32,9 +32,9 @@ const sharedProcess: Step[] = [
 ];
 
 const sharedCta = {
-  heading: "Discuss your project",
+  heading: "Let's Build 2gether",
   text: "30 minutes, free of charge. You receive the fixed price afterwards.",
-  button: "Discuss your project",
+  button: "Let's Build 2gether",
 };
 
 export const services: DetailPage[] = [
@@ -67,8 +67,8 @@ export const services: DetailPage[] = [
     ],
     cta: sharedCta,
     seo: {
-      title: "Websites | grow2gether",
-      description: "Custom websites that present the company, build trust and attract qualified inquiries.",
+      title: "Website Design & Development in New Delhi",
+      description: "Custom business websites built from scratch by grow2gether in New Delhi: fast, mobile-first, SEO-ready and made to bring qualified inquiries. From ₹5,900.",
     },
   },
   {
@@ -100,8 +100,8 @@ export const services: DetailPage[] = [
     ],
     cta: sharedCta,
     seo: {
-      title: "Online shops | grow2gether",
-      description: "Online shops with easy purchasing and processes that save time.",
+      title: "E-commerce Website & Online Shop Development",
+      description: "Online shops with an easy checkout, a clear catalogue and connected orders and inventory. E-commerce development by grow2gether, New Delhi. Fixed price.",
     },
   },
   {
@@ -133,8 +133,8 @@ export const services: DetailPage[] = [
     ],
     cta: sharedCta,
     seo: {
-      title: "Apps | grow2gether",
-      description: "Web and store apps that work simply and are pleasant to use.",
+      title: "Web App & Mobile App Development",
+      description: "Web apps and store apps with accounts, payments and memberships, designed to be simple and pleasant to use. App development by grow2gether, New Delhi.",
     },
   },
   {
@@ -166,8 +166,8 @@ export const services: DetailPage[] = [
     ],
     cta: sharedCta,
     seo: {
-      title: "Automations | grow2gether",
-      description: "Connected systems and automated processes that remove recurring manual work.",
+      title: "Business Process Automation & System Integration",
+      description: "Connect the tools you already use and automate offers, follow-ups, inventory and internal steps. Business automation by grow2gether, New Delhi.",
     },
   },
 ];
@@ -200,7 +200,7 @@ const inclusion = (
   ],
   cta: sharedCta,
   seo: {
-    title: `${title} | grow2gether`,
+    title: `${title} — Included in Every Project`,
     description: summary,
   },
 });

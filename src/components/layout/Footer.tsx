@@ -8,7 +8,7 @@ import { BloomCta } from "@/components/motion/BloomCta";
 
 import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
 import { prefersReducedMotion } from "@/lib/motion";
-import { Zynovate } from "@/components/ui/Zynovate";
+import { useBooking } from "@/components/booking/BookingProvider";
 import { DotField } from "@/components/motion/DotField";
 import { contact } from "@/data/contact";
 import { site } from "@/data/site";
@@ -33,6 +33,7 @@ export function Footer() {
   const wordmarkWrap = useRef<HTMLDivElement>(null);
   const wordmark = useRef<HTMLParagraphElement>(null);
   const { scrollTo } = useSmoothScroll();
+  const booking = useBooking();
   const year = new Date().getFullYear();
   const [street, city] = contact.location.split("|").map((part) => part.trim());
 
@@ -207,9 +208,9 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`} className={linkClass}>
-                  {contact.phone}
-                </a>
+                <button type="button" onClick={() => booking?.openBooking()} className={linkClass}>
+                  Request a call back
+                </button>
               </li>
               <li>
                 <a href={contact.mapUrl} target="_blank" rel="noreferrer" className={linkClass}>
@@ -263,11 +264,11 @@ export function Footer() {
 
         <div className="-mx-[clamp(1.25rem,3.4vw,4rem)] flex flex-wrap shrink-0 items-center justify-between gap-x-8 gap-y-3 border-t border-white/10 px-[clamp(1.25rem,3.4vw,4rem)] py-[clamp(0.75rem,2vh,1.5rem)] text-[1rem] text-white/55">
           <p>
-            © {year} <Zynovate>{site.name}</Zynovate>
+            © {year} {site.name}
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
             <a href="/privacy-policy" className="footer-link hover:text-white">
-              Data protection
+              Privacy policy
             </a>
             <span>Made in New Delhi</span>
             <button

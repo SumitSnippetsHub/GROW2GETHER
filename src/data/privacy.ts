@@ -167,7 +167,7 @@ export const privacyPolicy = {
         "If you have questions about this Privacy Policy, want to understand how your personal information is handled, or wish to exercise an applicable privacy right, please contact grow2gether using the information below:",
       contact: [
         { label: "Company", value: "grow2gether" },
-        { label: "Website", value: "grow2gether.com", href: "https://grow2gether.com" },
+        { label: "Website", value: "grow2gether.in", href: "https://grow2gether.in" },
         { label: "Email", value: "grow2gether@gmail.com", href: "mailto:grow2gether@gmail.com" },
       ],
       footer:

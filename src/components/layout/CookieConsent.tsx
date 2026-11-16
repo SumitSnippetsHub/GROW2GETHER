@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Check, Settings, X } from "lucide-react";
 import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
 
-const STORAGE_KEY = "zynovate-cookie-consent";
+const STORAGE_KEY = "grow2gether-cookie-consent";
 
 type Choice = "accepted" | "rejected" | "custom";
 

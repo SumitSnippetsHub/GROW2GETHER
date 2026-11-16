@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { about } from "@/data/about";
-import { HighlightZynovate } from "@/components/ui/Zynovate";
 import { isTouchDevice, prefersReducedMotion } from "@/lib/motion";
 
 export function About() {
@@ -111,7 +110,7 @@ export function About() {
           >
             <div className="max-w-3xl">
               <p className="eyebrow mb-7 text-about-highlight">
-                <HighlightZynovate text={i === 0 ? about.eyebrow : panel.label} />{" "}
+                {i === 0 ? about.eyebrow : panel.label}{" "}
                 <span className="ml-3 text-foreground/70">
                   0{i + 1} / 0{about.panels.length}
                 </span>
@@ -124,7 +123,7 @@ export function About() {
               </h2>
               {i === 0 && <p className="mt-7 text-xl font-medium md:text-2xl">{panel.heading}</p>}
               <p className="mt-8 max-w-xl text-lg leading-relaxed text-foreground/80">
-                <HighlightZynovate text={panel.body} />
+                {panel.body}
               </p>
             </div>
           </div>

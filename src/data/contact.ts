@@ -1,6 +1,5 @@
 export const contact = {
   email: "grow2gether@gmail.com",
-  phone: "99********",
   location: "New Delhi | India",
   mapUrl: "https://www.google.com/maps/search/?api=1&query=New+Delhi+India",
   isPlaceholder: false,
@@ -31,15 +30,12 @@ export const countryCodes = [
 ] as const;
 
 export const contactIntro = {
-  eyebrow: "Discuss your project",
+  eyebrow: "Let's Build 2gether",
   title: "Let us implement your idea.",
   description:
     "Tell us about it. We look forward to making something really good out of it together. 30 minutes, free. The fixed price comes afterwards.",
-  response: "World-class team · 100+ successful projects",
+  response: "Direct contact with the founder · Fixed price before we start",
 };
-
-export const contactPlaceholderNotice =
-  "Email, phone, and location below are placeholders until the live details are added.";
 
 export const contactChannels = {
   email: "Email",
@@ -67,11 +63,11 @@ export const contactSteps = [
 ] as const;
 
 export const contactFormCopy = {
-  title: "Discuss your project",
+  title: "Let's Build 2gether",
   intro: "30 minutes · Free initial consultation. Share a few details and we will reply with the next step.",
   name: { label: "Name", placeholder: "Your name" },
   email: { label: "Email", placeholder: "you@company.com" },
-  phone: { label: "Mobile number", placeholder: "99********" },
+  phone: { label: "Mobile number", placeholder: "98765 43210" },
   projectType: { label: "Project type", placeholder: "Select project type" },
   budget: { label: "Budget range", placeholder: "Select budget range" },
   message: {
@@ -80,7 +76,7 @@ export const contactFormCopy = {
     max: 1000,
   },
   consent: "I agree to be contacted about my project and receive relevant updates.",
-  submit: "Discuss your project",
+  submit: "Let's Build 2gether",
   formLabel: "Project inquiry",
 };
 

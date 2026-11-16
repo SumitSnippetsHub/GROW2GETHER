@@ -146,11 +146,6 @@ export function Industries() {
                 </button>
                 <div className="industry-reveal relative mb-5 aspect-[16/9] overflow-hidden md:aspect-[21/9] lg:hidden">
                   <Photo image={item.image} />
-                  {item.image?.isPlaceholder ? (
-                    <span className="absolute left-3 top-3 bg-white/90 px-2 py-1 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-foreground/80">
-                      placeholder image
-                    </span>
-                  ) : null}
                 </div>
               </li>
             ))}
@@ -186,9 +181,8 @@ export function Industries() {
                 ))}
                 <div className="absolute inset-x-0 top-0 z-[3] flex justify-between px-6 py-5 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-foreground">
                   <span>
-                    use case {pad(active + 1)}/{pad(total)}
+                    project {pad(active + 1)}/{pad(total)}
                   </span>
-                  {current.image?.isPlaceholder ? <span>placeholder image</span> : null}
                 </div>
                 <div className="absolute inset-x-0 bottom-0 z-[3] px-6 pb-6">
                   <p className="font-mono text-xs text-sand">/{slug(current.title)}</p>

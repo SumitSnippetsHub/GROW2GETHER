@@ -27,8 +27,6 @@ import {
   Target,
   UserRound,
   Wallet,
-  X,
-  createLucideIcon,
   type LucideIcon,
 } from "lucide-react";
 
@@ -40,44 +38,13 @@ import {
   contactErrors,
   contactFormCopy,
   contactIntro,
-  contactPlaceholderNotice,
   contactSteps,
   contactSuccess,
 } from "@/data/contact";
-import { social } from "@/data/social";
-import { SocialIcon } from "@/components/layout/SocialIcon";
+import { useBooking } from "@/components/booking/BookingProvider";
 import { CustomSelect } from "@/components/ui/CustomSelect";
 import { isTouchDevice, prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
-
-const Linkedin = createLucideIcon("Linkedin", [
-  [
-    "path",
-    {
-      d: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z",
-      key: "linkedin-path",
-    },
-  ],
-  ["rect", { width: "4", height: "12", x: "2", y: "9", key: "linkedin-rect" }],
-  ["circle", { cx: "4", cy: "4", r: "2", key: "linkedin-circle" }],
-]);
-
-const Github = createLucideIcon("Github", [
-  [
-    "path",
-    {
-      d: "M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4",
-      key: "github-mark",
-    },
-  ],
-  ["path", { d: "M9 18c-4.51 2-5-2-7-2", key: "github-tail" }],
-]);
-
-const Instagram = createLucideIcon("Instagram", [
-  ["rect", { width: "20", height: "20", x: "2", y: "2", rx: "5", ry: "5", key: "instagram-frame" }],
-  ["path", { d: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z", key: "instagram-lens" }],
-  ["line", { x1: "17.5", x2: "17.51", y1: "6.5", y2: "6.5", key: "instagram-dot" }],
-]);
 
 const stepIcons = { MessageCircle, Network, Rocket } as const;
 
@@ -109,14 +76,6 @@ const fieldOrder: ErrorField[] = [
 ];
 
 const channelIcons = { email: Mail, phone: Phone, location: MapPin } as const;
-
-function socialIcon(label: string): LucideIcon | null {
-  if (label === "LinkedIn") return Linkedin;
-  if (label === "GitHub") return Github;
-  if (label === "Instagram") return Instagram;
-  if (label === "X") return X;
-  return null;
-}
 
 function validate(values: Values, agreed: boolean): Errors {
   const errors: Errors = {};
@@ -216,6 +175,7 @@ function iconClass() {
 }
 
 export function Contact() {
+  const booking = useBooking();
   const root = useRef<HTMLElement>(null);
   const form = useRef<HTMLFormElement>(null);
   const [values, setValues] = useState<Values>(empty);
@@ -379,24 +339,7 @@ export function Contact() {
             })}
           </div>
 
-          {contact.isPlaceholder ? (
-            <p
-              data-contact-meta
-              className={cn(
-                rise,
-                "mt-8 max-w-sm text-xs leading-relaxed text-muted-foreground lg:mt-3 lg:leading-snug",
-              )}
-            >
-              {contactPlaceholderNotice}
-            </p>
-          ) : null}
-
-          <dl
-            className={cn(
-              "grid max-w-sm gap-4 lg:gap-2",
-              contact.isPlaceholder ? "mt-4 lg:mt-2" : "mt-10 lg:mt-4",
-            )}
-          >
+          <dl className="mt-10 grid max-w-sm gap-4 lg:mt-4 lg:gap-2">
             <ChannelRow
               icon={channelIcons.email}
               label={contactChannels.email}
@@ -410,12 +353,13 @@ export function Contact() {
               icon={channelIcons.phone}
               label={contactChannels.phone}
               value={
-                <a
+                <button
+                  type="button"
                   className="font-medium hover:text-primary"
-                  href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                  onClick={() => booking?.openBooking()}
                 >
-                  {contact.phone}
-                </a>
+                  Request a call back
+                </button>
               }
             />
             <ChannelRow
@@ -434,53 +378,6 @@ export function Contact() {
             />
           </dl>
 
-          <div
-            data-contact-meta
-            className={cn(
-              rise,
-              "mt-8 flex flex-wrap items-center gap-3 border-t border-border pt-5 lg:mt-3 lg:gap-2 lg:pt-2.5",
-            )}
-          >
-            <p className="eyebrow text-muted-foreground">{contactChannels.follow}</p>
-            <ul className="flex flex-wrap gap-2">
-              {social.map((item) => {
-                const Icon = socialIcon(item.label);
-                const className =
-                  "inline-flex size-8 items-center justify-center rounded-full border border-border bg-blush text-primary";
-                const glyph = Icon ? (
-                  <Icon aria-hidden className="size-3.5" strokeWidth={1.75} />
-                ) : (
-                  <span aria-hidden className="text-[10px] font-semibold">
-                    {item.label.slice(0, 1)}
-                  </span>
-                );
-                return (
-                  <li key={item.label}>
-                    {item.isPlaceholder || item.href === "#" ? (
-                      <span
-                        aria-disabled="true"
-                        aria-label={`${item.label}, placeholder`}
-                        className={className}
-                      >
-                        {glyph}
-                      </span>
-                    ) : (
-                      <a
-                        href={item.href}
-                        aria-label={item.label}
-                        className={cn(
-                          className,
-                          "transition-transform duration-200 hover:-translate-y-0.5",
-                        )}
-                      >
-                        {glyph}
-                      </a>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
         </div>
 
         <div

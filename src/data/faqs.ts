@@ -20,7 +20,7 @@ export const faqs: Faq[] = [
   {
     question: "What sets grow2gether apart from other agencies?",
     answer:
-      "The work is individual instead of a template. You talk to the founders directly. The price is fixed before we start, and the project is finished when you are satisfied with the agreed result.",
+      "The work is individual instead of a template. You talk to the founder directly. The price is fixed before we start, and the project is finished when you are satisfied with the agreed result.",
   },
   {
     question: "Do you also support SEO and online marketing?",
@@ -46,5 +46,15 @@ export const faqs: Faq[] = [
     question: "How quickly can we get started together?",
     answer:
       "The first step is the free 30-minute conversation. If the project fits, we define the scope and send the fixed-price offer.",
+  },
+  {
+    question: "Where is grow2gether based?",
+    answer:
+      "grow2gether is based in New Delhi, India, and works with businesses across Delhi NCR and the rest of India. Calls happen over Google Meet, phone or WhatsApp.",
+  },
+  {
+    question: "Which technologies do you build with?",
+    answer:
+      "Mostly Next.js, React and Astro, hosted on Vercel. The stack follows the project: a fast marketing site, an online shop or a web app each get what suits them.",
   },
 ];

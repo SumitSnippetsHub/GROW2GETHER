@@ -3,12 +3,26 @@ import { SiteShell } from "@/components/layout/SiteShell";
 import { About } from "@/components/sections/About";
 import { TeamGallery } from "@/components/sections/TeamGallery";
 import { RouteHero } from "@/components/sections/RouteHero";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, graph, ORG_ID } from "@/lib/schema";
+import { absoluteUrl, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = pageMetadata({
+  title: "About — Founder-Led Web Studio in New Delhi",
+  description:
+    "grow2gether is a founder-led studio in New Delhi building individual websites, shops and apps. Direct contact with the founder and a fixed price before we start.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <SiteShell>
+      <JsonLd
+        data={graph(
+          { "@type": "AboutPage", url: absoluteUrl("/about"), name: "About grow2gether", mainEntity: { "@id": ORG_ID } },
+          breadcrumbSchema([{ name: "About", path: "/about" }]),
+        )}
+      />
       <RouteHero route="about" />
       <About />
       <TeamGallery />

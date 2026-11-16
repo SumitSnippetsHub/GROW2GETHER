@@ -16,7 +16,7 @@ export const workIntro = {
   productNote: "Selected project",
   projectButton: "Discuss a project like this",
   contactTitle: "Have a project like this in mind?",
-  contactButton: "Discuss your project",
+  contactButton: "Let's Build 2gether",
   upcomingTitle: "More recent work.",
   lead: "Independent websites and professional product work.",
   headingTop: "Selected",

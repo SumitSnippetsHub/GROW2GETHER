@@ -1,6 +1,5 @@
 import { Mail } from "lucide-react";
 import { team, leadershipIntro } from "@/data/team";
-import { HighlightZynovate } from "@/components/ui/Zynovate";
 
 export function TeamGallery() {
   return (
@@ -8,10 +7,10 @@ export function TeamGallery() {
       <div className="mx-auto max-w-7xl">
         <p className="eyebrow text-about-highlight">{leadershipIntro.eyebrow}</p>
         <h2 className="mt-5 text-[clamp(2rem,5.5vw,3.75rem)] font-semibold leading-tight">
-          <HighlightZynovate text={leadershipIntro.title} />
+          {leadershipIntro.title}
         </h2>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-foreground/75">
-          <HighlightZynovate text={leadershipIntro.description} />
+          {leadershipIntro.description}
         </p>
         <div className="mt-14 grid gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-3xl">
           {team.map((member) => (

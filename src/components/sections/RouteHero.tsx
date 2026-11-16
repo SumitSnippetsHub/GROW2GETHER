@@ -36,7 +36,7 @@ const content = {
     detail: "Selected projects",
   },
   contact: {
-    number: "Discuss your project",
+    number: "Let's Build 2gether",
     title: "Let us implement your idea.",
     description:
       "Tell us about it. 30 minutes, free. We look forward to making something really good out of it together.",
@@ -143,9 +143,8 @@ export function RouteHero({ route }: { route: Route }) {
       <div className="pointer-events-none absolute right-[8%] top-1/2 size-[min(38vw,28rem)] -translate-y-1/2 rounded-full border border-primary/10 md:right-[10%]" />
       <div className="pointer-events-none absolute right-[14%] top-1/2 size-[min(27vw,20rem)] -translate-y-1/2 rounded-full border border-primary/10" />
       <div
-        className={`relative mx-auto grid max-w-7xl items-center gap-5 px-5 pb-10 pt-28 sm:px-8 md:grid-cols-[1.05fr_0.95fr] md:gap-10 md:px-12 md:pb-12 md:pt-32 ${
-          route === "contact" ? "min-h-[40svh]" : "min-h-[46svh]"
-        }`}
+        className={`relative mx-auto grid max-w-7xl items-center gap-5 px-5 pb-10 pt-28 sm:px-8 md:grid-cols-[1.05fr_0.95fr] md:gap-10 md:px-12 md:pb-12 md:pt-32 ${route === "contact" ? "min-h-[40svh]" : "min-h-[46svh]"
+          }`}
       >
         <div className="max-w-2xl">
           <p className="eyebrow flex items-center gap-3 text-primary">

@@ -8,7 +8,7 @@ export const servicesIntro = {
   eyebrow: "Solutions",
   title: "High-quality software.",
   description:
-    "From websites to digital products. Years of experience, applied to the thing your company actually needs.",
+    "From websites to digital products, built around the thing your company actually needs.",
 };
 
 export type FullService = Service & DetailPage;

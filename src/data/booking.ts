@@ -1,5 +1,5 @@
 export const bookingCopy = {
-  eyebrow: "Discuss your project",
+  eyebrow: "Let's Build 2gether",
   title: "Let's talk about",
   titleAccent: "your project.",
   intro: "Free and without obligation. Pick whatever is easiest for you.",

@@ -3,24 +3,26 @@ import { notFound } from "next/navigation";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { DetailPageView } from "@/components/sections/details/DetailPageView";
 import { products, getProduct } from "@/data/products";
+import { pageMetadata } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
+export const dynamicParams = false;
+
+// Short inclusion pages: kept out of the index so they don't compete with /products.
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const item = getProduct(slug);
-  if (!item) return { title: "Product Not Found | grow2gether" };
+  if (!item) return { title: "Not found", robots: { index: false } };
 
-  return {
+  return pageMetadata({
     title: item.seo.title,
     description: item.seo.description,
-    openGraph: {
-      title: item.seo.title,
-      description: item.seo.description,
-    },
-  };
+    path: `/products/${item.slug}`,
+    noindex: true,
+  });
 }
 
 export function generateStaticParams() {
