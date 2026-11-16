@@ -62,7 +62,7 @@ export function WorksIndex() {
       },
       (ctx) => {
         gsap.to(title, {
-          y: ctx.conditions?.mobile ? 78 : 230,
+          y: ctx.conditions?.["mobile"] ? 78 : 230,
           ease: "none",
           scrollTrigger: {
             trigger: header,

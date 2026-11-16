@@ -178,7 +178,7 @@ export function BulgeHeading({ id, className, style, children }: Props) {
         depthWrite: false,
         toneMapped: false,
       });
-      material.onBeforeCompile = (shader) => {
+      material.onBeforeCompile = (shader: any) => {
         shader.uniforms.uMouse = uniforms.uMouse;
         shader.uniforms.uRadius = uniforms.uRadius;
         shader.uniforms.uStrength = uniforms.uStrength;

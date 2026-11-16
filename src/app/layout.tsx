@@ -1,41 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, JetBrains_Mono, Jost, Mona_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 
+import { instrumentSerif, jetbrainsMono, jost, monaSans } from "@/app/fonts";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/data/site";
 import { graph, organizationSchema, websiteSchema } from "@/lib/schema";
 import { OG_IMAGE } from "@/lib/seo";
 
 import "@/styles.css";
-
-// Self-hosted at build time: no request to Google at runtime, no layout shift.
-const monaSans = Mona_Sans({
-  subsets: ["latin"],
-  axes: ["wdth"],
-  display: "swap",
-  variable: "--font-mona",
-});
-const jost = Jost({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-jost",
-});
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-instrument",
-});
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-  variable: "--font-jetbrains",
-});
 
 const googleVerification = process.env["NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION"];
 const bingVerification = process.env["NEXT_PUBLIC_BING_SITE_VERIFICATION"];

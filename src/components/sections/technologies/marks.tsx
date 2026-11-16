@@ -8,7 +8,7 @@ function Mark({
   children,
   viewBox = "0 0 24 24",
 }: {
-  className?: string;
+  className?: string | undefined;
   children: ReactNode;
   viewBox?: string;
 }) {
