@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { BloomCta } from "@/components/motion/BloomCta";
+import { ArrowUpRight } from "lucide-react";
+import { site } from "@/data/site";
 import { sequence, sequenceIntro, type SequenceStep, type SequenceTone } from "@/data/sequence";
-
+import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
 import { useCanPin } from "@/hooks/use-can-pin";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -165,8 +166,14 @@ export function Sequence() {
   const [stops, setStops] = useState<number[]>([]);
   const enhanced = useCanPin(1024);
   const railReady = stops.length > 1;
+  const { scrollTo } = useSmoothScroll();
 
-
+  const go = (href: string) => (e: React.MouseEvent) => {
+    const hash = href.startsWith("#") ? href : href.startsWith("/#") ? `#${href.split("#")[1]}` : null;
+    if (!hash) return;
+    e.preventDefault();
+    scrollTo(document.querySelector(hash) ? hash : window.innerHeight);
+  };
 
   useEffect(() => {
     if (!root.current || prefersReducedMotion()) return;
@@ -282,7 +289,14 @@ export function Sequence() {
             ))}
           </p>
           <div data-seq-reveal className="mt-[clamp(1.5rem,2.6vw,2.5rem)]">
-            <BloomCta />
+            <a
+              href={site.primaryCta.href}
+              onClick={go(site.primaryCta.href)}
+              className="inline-flex items-center gap-[clamp(1.5rem,2.6vw,2.75rem)] whitespace-nowrap rounded-[11px] bg-[#111] py-[clamp(0.8rem,1.05vw,1rem)] pl-[clamp(1.05rem,1.35vw,1.35rem)] pr-[clamp(0.95rem,1.2vw,1.15rem)] text-[clamp(0.9rem,1.05vw,1.05rem)] font-medium text-white transition-colors duration-300 hover:bg-black"
+            >
+              {site.primaryCta.label}
+              <ArrowUpRight className="size-[clamp(0.95rem,1.1vw,1.1rem)]" strokeWidth={2} />
+            </a>
           </div>
         </div>
 

@@ -207,16 +207,16 @@ export function Technologies() {
           <ul
             data-tech-reveal
             aria-label="Tools used in the work"
-            className="stack-grid grid grid-cols-2 gap-px overflow-hidden rounded-[22px] border border-[#e4e6ea] bg-[#e8eaee] sm:grid-cols-4"
+            className="stack-grid grid grid-cols-4 gap-px overflow-hidden rounded-[22px] border border-[#e4e6ea] bg-[#e8eaee]"
           >
             {technologyStack.map((name) => (
-              <li key={name} className="min-h-[6.5rem] bg-white lg:min-h-[7.25rem]">
-                <DotHoverCard label={name} className="stack-cell h-full min-h-[6.5rem] lg:min-h-[7.25rem]">
+              <li key={name} className="min-h-[5.4rem] bg-white sm:min-h-[6.5rem] lg:min-h-[7.25rem]">
+                <DotHoverCard label={name} className="stack-cell h-full min-h-[5.4rem] sm:min-h-[6.5rem] lg:min-h-[7.25rem]">
                   <StackMark
                     name={name}
-                    className="stack-mark size-9 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] lg:size-10"
+                    className="stack-mark size-7 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:size-9 lg:size-10"
                   />
-                  <span className="stack-name pointer-events-none absolute inset-x-2 bottom-[0.85rem] text-center text-[0.72rem] font-medium tracking-[-0.01em] text-[#111]">
+                  <span className="stack-name pointer-events-none absolute inset-x-1 bottom-[0.55rem] text-center text-[0.58rem] font-medium tracking-[-0.02em] text-[#111] sm:inset-x-2 sm:bottom-[0.85rem] sm:text-[0.72rem] sm:tracking-[-0.01em]">
                     {name}
                   </span>
                 </DotHoverCard>

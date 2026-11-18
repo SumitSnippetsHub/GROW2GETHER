@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { BloomCta } from "@/components/motion/BloomCta";
+import { ArrowUpRight } from "lucide-react";
+import { site } from "@/data/site";
 import { faqIntro, faqs } from "@/data/faqs";
-
+import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
 import { prefersReducedMotion } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -34,8 +35,14 @@ function PlusMinus({ open }: { open: boolean }) {
 export function Faq() {
   const root = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(0);
+  const { scrollTo } = useSmoothScroll();
 
-
+  const go = (href: string) => (event: MouseEvent) => {
+    const hash = href.startsWith("#") ? href : href.startsWith("/#") ? `#${href.split("#")[1]}` : null;
+    if (!hash) return;
+    event.preventDefault();
+    scrollTo(document.querySelector(hash) ? hash : window.innerHeight);
+  };
 
   useEffect(() => {
     if (!root.current || prefersReducedMotion()) return;
@@ -91,7 +98,14 @@ export function Faq() {
             <p className="max-w-[22rem] leading-[1.4] text-[#111] lg:text-right" style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.4rem)" }}>
               Can&apos;t find yours? Write to us.
             </p>
-            <BloomCta />
+            <a
+              href={site.primaryCta.href}
+              onClick={go(site.primaryCta.href)}
+              className="inline-flex items-center gap-[clamp(1.5rem,2.6vw,2.75rem)] whitespace-nowrap rounded-[11px] bg-[#111] py-[clamp(0.8rem,1.05vw,1rem)] pl-[clamp(1.05rem,1.35vw,1.35rem)] pr-[clamp(0.95rem,1.2vw,1.15rem)] text-[clamp(0.95rem,1.1vw,1.1rem)] font-medium text-white transition-colors duration-300 hover:bg-black"
+            >
+              {site.primaryCta.label}
+              <ArrowUpRight className="size-[clamp(0.95rem,1.1vw,1.1rem)]" strokeWidth={2} />
+            </a>
             <p className="max-w-[24rem] leading-[1.45] text-[#444] lg:text-right" style={{ fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)" }}>
               {faqIntro.description}
             </p>

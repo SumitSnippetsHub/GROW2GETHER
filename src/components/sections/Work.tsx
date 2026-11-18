@@ -21,6 +21,14 @@ type Mode = "full" | "reduced" | "none";
 const items = projects.filter((p) => p.preview);
 const pad = (n: number) => String(n + 1).padStart(2, "0");
 const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
+const hostOf = (url?: string) => {
+  if (!url) return "";
+  try {
+    return new URL(url).host.replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+};
 
 /** Jost positions the macron of "ō" over the following letter, so it is drawn by hand. */
 function Title({ text }: { text: string }) {
@@ -232,7 +240,10 @@ export function Work() {
                       dim && "opacity-35",
                     )}
                   >
-                    <div className="flex items-center justify-between gap-4 md:pr-8">
+                    <div className="md:pr-8">
+                      <p className="mb-2 font-mono text-[0.7rem] tracking-[0.14em] text-[#111]/45 md:hidden">
+                        {pad(i)}
+                      </p>
                       <h3
                         className="relative font-semibold leading-[1.1] tracking-[-0.045em]"
                         style={{ fontSize: "clamp(2rem, 3.8vw, 4rem)" }}
@@ -240,7 +251,7 @@ export function Work() {
                         <span
                           aria-hidden
                           className={cn(
-                            "absolute left-0 top-1/2 -translate-y-1/2 text-[0.36em] font-medium tracking-normal text-[#111]/55 transition-[opacity,transform] duration-500",
+                            "absolute left-0 top-1/2 -translate-y-1/2 hidden text-[0.36em] font-medium tracking-normal text-[#111]/55 transition-[opacity,transform] duration-500 md:block",
                             ease,
                             on ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0",
                           )}
@@ -268,17 +279,6 @@ export function Work() {
                           />
                         </span>
                       </h3>
-                      <span className="block aspect-[16/10] w-[clamp(6rem,26vw,9rem)] shrink-0 overflow-hidden rounded-[10px] bg-black/5 md:[@media(hover:hover)_and_(pointer:fine)]:hidden">
-                        <img
-                          src={project.preview!.src}
-                          alt=""
-                          width={project.preview!.width}
-                          height={project.preview!.height}
-                          loading="lazy"
-                          decoding="async"
-                          className={cn(media, "h-full w-full object-cover group-hover:scale-[1.07] group-active:scale-[1.07]")}
-                        />
-                      </span>
                     </div>
                     <div className="max-w-[29rem]">
                       <p className="text-[clamp(0.95rem,1.15vw,1.15rem)] font-semibold leading-[1.4] tracking-[-0.01em]">
@@ -288,6 +288,29 @@ export function Work() {
                         {project.description ?? project.summary}
                       </p>
                     </div>
+                    <figure className="mt-2 overflow-hidden rounded-[20px] bg-[#f3f3f3] shadow-[0_18px_40px_-28px_rgba(0,0,0,0.45)] ring-1 ring-black/[0.07] md:hidden">
+                      <div className="flex items-center gap-1.5 border-b border-black/[0.06] bg-white/90 px-3 py-2">
+                        <span className="size-1.5 rounded-full bg-[#ff5f57]" />
+                        <span className="size-1.5 rounded-full bg-[#febc2e]" />
+                        <span className="size-1.5 rounded-full bg-[#28c840]" />
+                        {hostOf(project.url) ? (
+                          <span className="ml-2 truncate font-mono text-[10px] tracking-[-0.02em] text-[#111]/40">
+                            {hostOf(project.url)}
+                          </span>
+                        ) : null}
+                      </div>
+                      <div className="aspect-[16/10] overflow-hidden bg-white">
+                        <img
+                          src={project.preview!.src}
+                          alt={`${project.title} website`}
+                          width={project.preview!.width}
+                          height={project.preview!.height}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover object-top"
+                        />
+                      </div>
+                    </figure>
                   </div>
                 </li>
               );

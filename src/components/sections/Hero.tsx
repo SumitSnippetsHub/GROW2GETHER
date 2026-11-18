@@ -173,12 +173,11 @@ export function Hero() {
         }}
       />
 
-      <div className="relative flex h-full w-full flex-col px-[3.4vw] pb-[4.5vh] pt-[calc(4.5rem+3vh)] sm:pt-[calc(5rem+3.5vh)]">
+      <div className="relative flex h-full w-full flex-col px-5 pb-[4.5vh] pt-[calc(4.5rem+2.4vh)] sm:px-[3.4vw] sm:pt-[calc(5rem+3.5vh)]">
         <div className="flex flex-1 items-center">
           <BulgeHeading
             id="hero-title"
-            className="w-full font-medium tracking-[-0.035em]"
-            style={{ fontSize: "clamp(2.4rem, min(7.1vw, 14.5vh), 10.5rem)", lineHeight: 1.22 }}
+            className="hero-title w-full font-medium tracking-[-0.045em] md:tracking-[-0.035em]"
           >
             <span className="flex flex-wrap items-center gap-x-[0.22em] md:flex-nowrap">
               <span className="whitespace-nowrap">Websites,</span>
@@ -214,8 +213,8 @@ export function Hero() {
           </BulgeHeading>
         </div>
 
-        <div className="grid items-end gap-x-[2vw] gap-y-6 md:grid-cols-[auto_auto] md:justify-between xl:flex">
-          <p className="text-[clamp(1.05rem,1.75vw,1.65rem)] md:col-span-2 md:whitespace-nowrap xl:col-span-1 leading-[1.45] tracking-[-0.01em] text-[#111]">
+        <div className="grid justify-items-center gap-x-[2vw] gap-y-5 text-center md:grid-cols-[auto_auto] md:items-end md:justify-between md:justify-items-stretch md:text-left xl:flex">
+          <p className="max-w-[22rem] text-[clamp(1.05rem,4.2vw,1.65rem)] leading-[1.45] tracking-[-0.01em] text-[#111] md:col-span-2 md:max-w-none md:whitespace-nowrap xl:col-span-1">
             Custom-designed to generate more qualified inquiries
             <br />
             More sales and less manual labor
@@ -223,16 +222,16 @@ export function Hero() {
             in your company.
           </p>
 
-          <div className="flex shrink-0 flex-col items-start gap-2.5 xl:items-center">
+          <div className="flex shrink-0 flex-col items-center gap-2.5 md:items-start xl:items-center">
             <BloomCta
               className="text-[clamp(0.8rem,0.95vw,0.95rem)]"
             />
             <p className="whitespace-nowrap text-[clamp(0.8rem,1vw,1rem)] text-[#555]">
-              Individual solutions starting from ₹5900
+              Individual solutions starting from ₹5,900
             </p>
           </div>
 
-          <div className="flex shrink-0 flex-wrap items-center gap-[clamp(1rem,2vw,1.75rem)] md:flex-nowrap">
+          <div className="flex shrink-0 flex-wrap items-center justify-center gap-[clamp(1rem,2vw,1.75rem)] md:flex-nowrap md:justify-start">
             <div className="flex items-center gap-3">
               <span className={cn(media, "flex items-center")}>
                 {faces.map((face, index) => (
