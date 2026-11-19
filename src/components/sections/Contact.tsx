@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { gsap } from "gsap";
+import { track } from "@/lib/analytics";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowRight,
@@ -344,7 +345,7 @@ export function Contact() {
               icon={channelIcons.email}
               label={contactChannels.email}
               value={
-                <a className="font-medium hover:text-primary" href={`mailto:${contact.email}`}>
+                <a className="font-medium hover:text-primary" href={`mailto:${contact.email}`} onClick={() => track("email_click", { location: "contact" })}>
                   {contact.email}
                 </a>
               }

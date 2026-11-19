@@ -29,7 +29,7 @@ export async function GET() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={logoSrc} width={300} height={74} alt="" />
           <div style={{ display: "flex", fontSize: 24, letterSpacing: 4, textTransform: "uppercase", color: "#6b6b6b" }}>
-            New Delhi · India
+            India · Delhi-NCR
           </div>
         </div>
 

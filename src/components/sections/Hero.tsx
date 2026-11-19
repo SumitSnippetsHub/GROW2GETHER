@@ -17,7 +17,7 @@ const faces = projects
   .slice(0, 3)
   .map((project) => ({ src: project.preview!.src, alt: project.title }));
 
-const appPhoto = "/projects/zenmen.jpg";
+const appPhoto = "/projects/zenmen.webp";
 
 function Tile({ children }: { children: React.ReactNode }) {
   return (
@@ -125,6 +125,7 @@ function AppCard() {
         alt=""
         width={240}
         height={240}
+        fetchPriority="high"
         crossOrigin="anonymous"
         className="absolute inset-y-0 right-0 h-full w-[52%] object-cover"
       />

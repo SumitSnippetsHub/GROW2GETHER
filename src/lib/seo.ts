@@ -13,13 +13,15 @@ type PageSeo = {
   absoluteTitle?: boolean;
   noindex?: boolean;
   type?: "website" | "article";
+  keywords?: string[];
 };
 
-export function pageMetadata({ title, description, path, absoluteTitle, noindex, type = "website" }: PageSeo): Metadata {
+export function pageMetadata({ title, description, path, absoluteTitle, noindex, type = "website", keywords }: PageSeo): Metadata {
   const fullTitle = absoluteTitle ? title : `${title} | ${site.name}`;
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
+    ...(keywords?.length ? { keywords } : {}),
     alternates: { canonical: path },
     openGraph: {
       type,

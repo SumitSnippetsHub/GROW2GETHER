@@ -7,6 +7,7 @@ import { BloomCta } from "@/components/motion/BloomCta";
 import { IntroBackdrop } from "@/components/motion/IntroBackdrop";
 import { site } from "@/data/site";
 import { projects, workIntro } from "@/data/projects";
+import { projectSlug } from "@/lib/projects";
 import { whyIntro } from "@/data/whyUs";
 import { cn } from "@/lib/utils";
 
@@ -154,14 +155,13 @@ export function WorksIndex() {
       <ul className="relative z-10 mx-auto grid w-[min(92vw,1240px)] gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((project) => {
           const image = project.preview ?? project.screenshots?.cover;
-          const href = project.url && project.url !== "#" ? project.url : "/#contact";
-          const external = href.startsWith("http");
-          const linkProps = external ? { target: "_blank" as const, rel: "noreferrer" } : {};
+          const href = `/works/${projectSlug(project.title)}`;
+          const live = project.url && project.url !== "#" ? project.url : "";
           return (
             <li key={project.id}>
               <article className="work-card group">
                 <div className="work-card-inner p-2.5">
-                  <a href={href} {...linkProps} className="relative block overflow-hidden rounded-[16px] bg-[#f4f4f4]">
+                  <a href={href} className="relative block overflow-hidden rounded-[16px] bg-[#f4f4f4]">
                     {image ? (
                       <img
                         src={image.src}
@@ -187,13 +187,16 @@ export function WorksIndex() {
                       </p>
                       <p className="mt-0.5 text-[0.88rem] text-black/45">{project.category}</p>
                     </div>
-                    <a
-                      href={href}
-                      {...linkProps}
-                      className="shrink-0 pb-0.5 text-[0.88rem] text-black/45 transition-colors hover:text-[#111]"
-                    >
-                      Visit site
-                    </a>
+                    {live ? (
+                      <a
+                        href={live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="shrink-0 pb-0.5 text-[0.88rem] text-black/45 transition-colors hover:text-[#111]"
+                      >
+                        Visit site
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               </article>

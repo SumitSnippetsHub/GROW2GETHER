@@ -1,7 +1,8 @@
 import { contact } from "@/data/contact";
 import { projects } from "@/data/projects";
-import { services } from "@/data/services";
+import { servicePages } from "@/data/servicePages";
 import { site } from "@/data/site";
+import { projectSlug } from "@/lib/projects";
 import { absoluteUrl } from "@/lib/seo";
 
 type Faq = { question: string; answer: string };
@@ -31,8 +32,10 @@ export function organizationSchema() {
       addressCountry: site.location.country,
     },
     areaServed: [
-      { "@type": "City", name: site.location.city },
-      { "@type": "Country", name: site.location.countryName },
+      { "@type": "AdministrativeArea", name: "Delhi-NCR" },
+      { "@type": "Country", name: "India" },
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "United Kingdom" },
     ],
     founder: { "@type": "Person", name: "Sumit", jobTitle: "Founder" },
     knowsAbout: [
@@ -49,23 +52,29 @@ export function organizationSchema() {
       "@type": "ContactPoint",
       contactType: "sales",
       email: contact.email,
-      areaServed: site.location.country,
+      areaServed: ["IN", "US", "GB"],
       availableLanguage: ["English"],
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Digital services",
-      itemListElement: services.map((service) => ({
-        "@type": "Offer",
-        priceCurrency: "INR",
-        priceSpecification: { "@type": "PriceSpecification", minPrice: MIN_PRICE_INR, priceCurrency: "INR" },
-        itemOffered: {
-          "@type": "Service",
-          name: service.title,
-          description: service.summary,
-          url: absoluteUrl(`/services/${service.slug}`),
-        },
-      })),
+      itemListElement: servicePages
+        .filter((service) => service.slug !== "website-development-delhi")
+        .map((service) => ({
+          "@type": "Offer",
+          priceCurrency: "INR",
+          priceSpecification: {
+            "@type": "PriceSpecification",
+            minPrice: service.plans?.length ? Number(service.plans[0]!.priceInr.replace(/[^\d]/g, "")) : MIN_PRICE_INR,
+            priceCurrency: "INR",
+          },
+          itemOffered: {
+            "@type": "Service",
+            name: service.title,
+            description: service.summary,
+            url: absoluteUrl(service.path),
+          },
+        })),
     },
   };
 }
@@ -105,21 +114,46 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
   };
 }
 
-export function serviceSchema(service: { slug: string; title: string; summary: string; overview: string[] }) {
+const areas = [
+  { "@type": "AdministrativeArea", name: "Delhi-NCR" },
+  { "@type": "Country", name: "India" },
+  { "@type": "Country", name: "United States" },
+  { "@type": "Country", name: "United Kingdom" },
+];
+
+export function serviceSchema(service: {
+  slug: string;
+  path?: string;
+  title: string;
+  summary: string;
+  overview: string[];
+  plans?: { name: string; priceInr: string }[];
+}) {
+  const path = service.path ?? `/services/${service.slug}`;
+  const offers = service.plans?.length
+    ? service.plans.map((plan) => ({
+        "@type": "Offer",
+        name: plan.name,
+        price: plan.priceInr.replace(/[^\d]/g, ""),
+        priceCurrency: "INR",
+        availability: "https://schema.org/InStock",
+        description: "Tentative package price. Extra functionality is priced separately.",
+      }))
+    : {
+        "@type": "Offer",
+        priceCurrency: "INR",
+        priceSpecification: { "@type": "PriceSpecification", minPrice: MIN_PRICE_INR, priceCurrency: "INR" },
+      };
   return {
     "@type": "Service",
-    "@id": `${absoluteUrl(`/services/${service.slug}`)}#service`,
+    "@id": `${absoluteUrl(path)}#service`,
     name: `${service.title} by ${site.name}`,
     serviceType: service.title,
     description: service.overview.join(" ") || service.summary,
-    url: absoluteUrl(`/services/${service.slug}`),
+    url: absoluteUrl(path),
     provider: { "@id": ORG_ID },
-    areaServed: { "@type": "Country", name: site.location.countryName },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "INR",
-      priceSpecification: { "@type": "PriceSpecification", minPrice: MIN_PRICE_INR, priceCurrency: "INR" },
-    },
+    areaServed: areas,
+    offers,
   };
 }
 
@@ -136,11 +170,45 @@ export function worksSchema() {
         name: project.title,
         genre: project.category,
         description: project.description ?? project.tagline,
-        ...(project.url ? { url: project.url } : {}),
+        url: absoluteUrl(`/works/${projectSlug(project.title)}`),
+        ...(project.url ? { sameAs: project.url } : {}),
         ...(project.preview ? { image: absoluteUrl(project.preview.src) } : {}),
         contributor: { "@id": ORG_ID },
       },
     })),
+  };
+}
+
+export function creativeWorkSchema(project: (typeof projects)[number]) {
+  const path = `/works/${projectSlug(project.title)}`;
+  return {
+    "@type": "CreativeWork",
+    "@id": `${absoluteUrl(path)}#work`,
+    name: project.title,
+    headline: project.tagline ?? project.title,
+    genre: project.category,
+    description: project.summary ?? project.description ?? project.tagline,
+    url: absoluteUrl(path),
+    ...(project.url ? { sameAs: project.url } : {}),
+    ...(project.preview ? { image: absoluteUrl(project.preview.src) } : {}),
+    creator: { "@id": ORG_ID },
+  };
+}
+
+export function articleSchema(article: { slug: string; title: string; description: string; date: string; image?: { src: string } }) {
+  const path = `/blog/${article.slug}`;
+  return {
+    "@type": "BlogPosting",
+    "@id": `${absoluteUrl(path)}#article`,
+    headline: article.title,
+    description: article.description,
+    datePublished: article.date,
+    dateModified: article.date,
+    inLanguage: "en-IN",
+    mainEntityOfPage: absoluteUrl(path),
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    image: absoluteUrl(article.image?.src ?? "/og.png"),
   };
 }
 

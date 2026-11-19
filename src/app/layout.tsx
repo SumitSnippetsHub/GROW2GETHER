@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
 import { instrumentSerif, jetbrainsMono, jost, monaSans } from "@/app/fonts";
+import { Analytics } from "@/components/seo/Analytics";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/data/site";
 import { graph, organizationSchema, websiteSchema } from "@/lib/schema";
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body suppressHydrationWarning>
         <JsonLd data={graph(organizationSchema(), websiteSchema())} />
+        <Analytics />
         {children}
       </body>
     </html>

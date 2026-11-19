@@ -1,7 +1,7 @@
 import { contact } from "@/data/contact";
 import { faqs } from "@/data/faqs";
 import { projects } from "@/data/projects";
-import { services } from "@/data/services";
+import { servicePages } from "@/data/servicePages";
 import { site } from "@/data/site";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -13,10 +13,10 @@ export function GET() {
     "",
     `> ${site.metaDescription}`,
     "",
-    `${site.name} is a founder-led web design and development studio in ${site.location.city}, ${site.location.countryName}. Every project is designed individually (no templates), the fixed price is agreed before work starts, and individual solutions start from ₹5,900. The first conversation is a free 30-minute call.`,
+    `${site.name} is a founder-led web design and development studio. ${site.location.line} Every project is designed individually (no templates), the fixed price is agreed before work starts, and individual solutions start from ₹5,900. Website packages are listed on the website development page. The first conversation is a free 30-minute call.`,
     "",
     "## Services",
-    ...services.map((s) => `- [${s.title}](${absoluteUrl(`/services/${s.slug}`)}): ${s.seo.description}`),
+    ...servicePages.map((s) => `- [${s.title}](${absoluteUrl(s.path)}): ${s.seo.description}`),
     "",
     "## Pages",
     `- [Home](${absoluteUrl("/")}): overview, process, pricing and FAQ`,
@@ -33,7 +33,7 @@ export function GET() {
     "## Contact",
     `- Email: ${contact.email}`,
     `- Website: ${site.url}`,
-    `- Location: ${site.location.city}, ${site.location.region}, ${site.location.countryName}`,
+    `- Location: ${site.location.line}`,
     "",
   ];
 

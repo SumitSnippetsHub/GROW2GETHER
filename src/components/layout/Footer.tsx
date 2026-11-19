@@ -11,13 +11,15 @@ import { prefersReducedMotion } from "@/lib/motion";
 import { useBooking } from "@/components/booking/BookingProvider";
 import { DotField } from "@/components/motion/DotField";
 import { contact } from "@/data/contact";
+import { servicePages } from "@/data/servicePages";
 import { site } from "@/data/site";
 import { social } from "@/data/social";
+import { track } from "@/lib/analytics";
 
 const jost = "var(--font-jost), ui-sans-serif, system-ui, sans-serif";
 const serif = "var(--font-instrument), Georgia, 'Times New Roman', serif";
 
-const solutions = site.trustLine.map((label) => ({ label, href: "/#services" }));
+const services = servicePages.filter((page) => page.slug !== "website-development-delhi");
 const FIELD_COLORS = ["#4057c9", "#6476d8", "#7462cf", "#2a357e"];
 const FIELD_MASK = "radial-gradient(closest-side, #000 35%, rgba(0,0,0,0.6) 62%, transparent 100%)";
 const liveSocials = social.filter((item) => !item.isPlaceholder && item.href !== "#");
@@ -153,6 +155,7 @@ export function Footer() {
             />
             <a
               href={`mailto:${contact.email}`}
+              onClick={() => track("email_click", { location: "footer" })}
               className="footer-email pb-1 text-[clamp(1.35rem,2.2vw,2.25rem)] font-normal tracking-[-0.025em] text-white"
             >
               {contact.email}
@@ -164,7 +167,7 @@ export function Footer() {
           data-footer-rise
           className="mt-[clamp(1.5rem,5vh,4.5rem)] grid grid-cols-2 gap-x-6 gap-y-[clamp(1.25rem,3vh,2.5rem)] border-t border-white/10 pt-[clamp(1.25rem,3.6vh,3rem)] sm:gap-x-8 lg:grid-cols-12"
         >
-          <div className={liveSocials.length ? "col-span-2 lg:col-span-3 lg:pr-8" : "col-span-2 lg:col-span-4 lg:pr-10"}>
+          <div className={liveSocials.length ? "col-span-2 lg:col-span-3 lg:pr-8" : "col-span-2 lg:col-span-3 lg:pr-8"}>
             <p className="max-w-[24rem] text-[clamp(1.15rem,1.5vw,1.5rem)] leading-[1.4] tracking-[-0.015em] text-white/80">
               {site.description}{" "}
               <em className="text-white" style={{ fontFamily: serif }}>
@@ -173,7 +176,7 @@ export function Footer() {
             </p>
           </div>
 
-          <nav aria-label="Footer" className="col-span-2 sm:col-span-1 lg:col-span-3">
+          <nav aria-label="Footer" className="col-span-2 sm:col-span-1 lg:col-span-2">
             <ColumnTitle>Navigation</ColumnTitle>
             <ul className="grid w-max grid-cols-2 gap-x-10 gap-y-2">
               {site.nav.map((link) => (
@@ -186,24 +189,24 @@ export function Footer() {
             </ul>
           </nav>
 
-          <nav aria-label="Solutions" className="lg:col-span-2">
-            <ColumnTitle>Solutions</ColumnTitle>
-            <ul className="space-y-2.5">
-              {solutions.map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} onClick={go(item.href)} className={linkClass}>
-                    {item.label}
+          <nav aria-label="Services" className="col-span-2 lg:col-span-5">
+            <ColumnTitle>Services</ColumnTitle>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-1.5">
+              {services.map((item) => (
+                <li key={item.slug}>
+                  <a href={item.path} className="footer-link text-[0.92rem] leading-snug text-white/60 hover:text-white">
+                    {item.title}
                   </a>
                 </li>
               ))}
             </ul>
           </nav>
 
-          <div className={liveSocials.length ? "lg:col-span-2" : "lg:col-span-3"}>
+          <div className="lg:col-span-2">
             <ColumnTitle>Contact</ColumnTitle>
             <ul className="space-y-2.5">
               <li>
-                <a href={`mailto:${contact.email}`} className={linkClass}>
+                <a href={`mailto:${contact.email}`} onClick={() => track("email_click", { location: "footer-contact" })} className={linkClass}>
                   {contact.email}
                 </a>
               </li>
@@ -267,10 +270,16 @@ export function Footer() {
             © {year} {site.name}
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+            <a href="/blog" className="footer-link hover:text-white">
+              Blog
+            </a>
             <a href="/privacy-policy" className="footer-link hover:text-white">
               Privacy policy
             </a>
-            <span>Made in New Delhi</span>
+            <a href="/terms" className="footer-link hover:text-white">
+              Terms
+            </a>
+            <span>India · Delhi-NCR</span>
             <button
               type="button"
               suppressHydrationWarning

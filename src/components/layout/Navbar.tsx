@@ -8,6 +8,7 @@ import { contact } from "@/data/contact";
 import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
 import { cn } from "@/lib/utils";
 import { useBooking } from "@/components/booking/BookingProvider";
+import { track } from "@/lib/analytics";
 
 function sectionId(href: string) {
   if (href === "/") return "home";
@@ -51,7 +52,7 @@ export function Navbar() {
 
   useEffect(() => {
     if (pathname !== "/") {
-      setActive(pathname.slice(1) || null);
+      setActive(pathname.split("/").filter(Boolean)[0] ?? null);
       return;
     }
     setActive("home");
@@ -250,6 +251,7 @@ export function Navbar() {
         </div>
         <a
           href={`mailto:${contact.email}`}
+          onClick={() => track("email_click", { location: "nav" })}
           tabIndex={open ? 0 : -1}
           className="mt-4 text-sm text-black/60 transition-colors hover:text-black"
         >

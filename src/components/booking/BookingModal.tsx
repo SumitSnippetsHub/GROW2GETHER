@@ -19,6 +19,7 @@ import {
   X,
 } from "lucide-react";
 import { bookingCopy as copy } from "@/data/booking";
+import { track } from "@/lib/analytics";
 import { contact, countryCodes } from "@/data/contact";
 import { site } from "@/data/site";
 import {
@@ -243,6 +244,7 @@ function BookingDialog({ closing, onClose }: { closing: boolean; onClose: () => 
       }
       setKind(target);
       setView("done");
+      track("booking_submit", { method: target });
     } catch {
       setServerError(copy.errors.network);
     } finally {
@@ -428,6 +430,7 @@ function BookingDialog({ closing, onClose }: { closing: boolean; onClose: () => 
                   title={copy.choose.options.whatsapp.title}
                   body={copy.choose.options.whatsapp.body}
                   href="/api/whatsapp"
+                  onClick={() => track("whatsapp_click")}
                 />
               </div>
             </div>
@@ -752,7 +755,7 @@ function Option({
   const className =
     "group flex w-full items-center gap-3.5 rounded-2xl border border-black/[0.08] bg-white p-3.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-black/20 hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,0.35)]";
   return href ? (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+    <a href={href} target="_blank" rel="noopener noreferrer" onClick={onClick} className={className}>
       {inner}
     </a>
   ) : (

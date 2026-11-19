@@ -8,9 +8,9 @@ import { breadcrumbSchema, graph, ORG_ID } from "@/lib/schema";
 import { absoluteUrl, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About — Founder-Led Web Studio in New Delhi",
+  title: "About — Founder-Led Web Studio in India, Delhi-NCR",
   description:
-    "grow2gether is a founder-led studio in New Delhi building individual websites, shops and apps. Direct contact with the founder and a fixed price before we start.",
+    "grow2gether is a founder-led studio based in India, Delhi-NCR, serving the US, UK and worldwide. Direct contact with the founder and a fixed price before we start.",
   path: "/about",
 });
 

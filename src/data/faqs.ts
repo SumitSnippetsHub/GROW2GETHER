@@ -50,7 +50,7 @@ export const faqs: Faq[] = [
   {
     question: "Where is grow2gether based?",
     answer:
-      "grow2gether is based in New Delhi, India, and works with businesses across Delhi NCR and the rest of India. Calls happen over Google Meet, phone or WhatsApp.",
+      "grow2gether is based in India, Delhi-NCR. We serve businesses in India and clients in the US, UK and worldwide. Calls happen over Google Meet, phone or WhatsApp. There is no public office to visit.",
   },
   {
     question: "Which technologies do you build with?",

@@ -4,6 +4,7 @@ import type { MouseEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { useBooking } from "@/components/booking/BookingProvider";
 import { site } from "@/data/site";
+import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 type BloomCtaProps = {
@@ -26,6 +27,7 @@ export function BloomCta({
   const onClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (!booking) return;
     event.preventDefault();
+    track("cta_click", { location: "bloom" });
     booking.openBooking();
   };
 

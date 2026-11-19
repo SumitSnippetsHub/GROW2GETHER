@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 import { useSmoothScroll } from "@/components/motion/SmoothScrollProvider";
 import { BookingModal } from "@/components/booking/BookingModal";
+import { track } from "@/lib/analytics";
 
 const BookingContext = createContext<{ openBooking: () => void } | null>(null);
 
@@ -11,7 +12,10 @@ export const useBooking = () => useContext(BookingContext);
 export function BookingProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const { setScrollLocked } = useSmoothScroll();
-  const openBooking = useCallback(() => setOpen(true), []);
+  const openBooking = useCallback(() => {
+    track("booking_open");
+    setOpen(true);
+  }, []);
   const close = useCallback(() => setOpen(false), []);
 
   useEffect(() => {

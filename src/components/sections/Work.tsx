@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ArrowUpRight } from "lucide-react";
 import { projects, workIntro } from "@/data/projects";
+import { projectSlug } from "@/lib/projects";
 import { REDUCED_MOTION_QUERY } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -265,9 +266,9 @@ export function Work() {
                             on && "translate-x-[0.6em]",
                           )}
                         >
-                          <span>
+                          <a href={`/works/${projectSlug(project.title)}`} className="hover:text-primary">
                             <Title text={project.title} />
-                          </span>
+                          </a>
                           <ArrowUpRight
                             aria-hidden
                             strokeWidth={2}

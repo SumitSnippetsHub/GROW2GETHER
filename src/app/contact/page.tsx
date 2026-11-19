@@ -10,7 +10,7 @@ import { absoluteUrl, pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Contact — Book a Free 30-Minute Project Call",
   description:
-    "Talk to grow2gether about your website, online shop or app. Book a free 30-minute call, request a call back, or chat on WhatsApp. Based in New Delhi, India.",
+    "Talk to grow2gether about your website, online shop or app. Book a free 30-minute call, request a call back, or chat on WhatsApp. Based in India, Delhi-NCR. Serving the US, UK and worldwide.",
   path: "/contact",
 });
 

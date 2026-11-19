@@ -4,25 +4,31 @@ const envUrl = typeof process !== "undefined" ? process.env?.NEXT_PUBLIC_SITE_UR
 
 export const site = {
   name: "grow2gether",
-  url: (envUrl || "https://grow2gether.in").replace(/\/$/, ""),
-  title: "grow2gether | Web Design & Development Agency in New Delhi",
+  url: (envUrl || "https://www.grow2gether.in").replace(/\/$/, ""),
+  title: "grow2gether | Web Design & Development in India, Delhi-NCR",
   metaDescription:
-    "grow2gether builds custom websites, online shops, web apps and automations for businesses in New Delhi and across India. Fixed price, free 30-minute call.",
+    "grow2gether builds custom websites, online shops, web apps and automations. Based in India, Delhi-NCR. Serving the US, UK and worldwide. Fixed price, free 30-minute call.",
   tagline: "Websites, shops and apps.",
   description:
     "Custom-designed websites, shops and apps that generate more qualified inquiries.",
   locale: "en_IN",
-  location: { city: "New Delhi", region: "Delhi", country: "IN", countryName: "India" },
+  location: {
+    city: "New Delhi",
+    region: "Delhi-NCR",
+    country: "IN",
+    countryName: "India",
+    line: "Based in India, Delhi-NCR. Serving the US, UK and worldwide.",
+  },
   keywords: [
-    "web design agency New Delhi",
-    "website development company Delhi",
+    "web design agency Delhi-NCR",
+    "website development company India",
+    "web design for US businesses",
+    "web design for UK businesses",
     "custom website design India",
     "ecommerce website development",
-    "online shop development India",
-    "web app development",
-    "business automation",
+    "web application development",
     "Next.js developer India",
-    "website for small business",
+    "business automation",
     "grow2gether",
   ],
   logo: { src: "/brand/grow2gether-logo.png", alt: "grow2gether", width: 857, height: 212 },
@@ -66,8 +72,9 @@ export const site = {
   },
 
   nav: [
-    { label: "Solutions", href: "/#services" },
+    { label: "Services", href: "/services" },
     { label: "Work", href: "/works" },
+    { label: "Blog", href: "/blog" },
     { label: "Why us", href: "/#why" },
     { label: "Pricing", href: "/#products" },
     { label: "Process", href: "/#process" },

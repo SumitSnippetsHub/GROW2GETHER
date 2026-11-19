@@ -29,6 +29,7 @@ export function CookieConsent() {
 
   const save = (next: Choice) => {
     window.localStorage.setItem(STORAGE_KEY, next);
+    window.dispatchEvent(new Event("grow2gether-consent"));
     setChoice(next);
     setPreferences(false);
   };

@@ -1,7 +1,7 @@
 export const contact = {
   email: "grow2gether@gmail.com",
-  location: "New Delhi | India",
-  mapUrl: "https://www.google.com/maps/search/?api=1&query=New+Delhi+India",
+  location: "India, Delhi-NCR · US, UK and worldwide",
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=Delhi+NCR+India",
   isPlaceholder: false,
   projectTypes: [
     "Website",
